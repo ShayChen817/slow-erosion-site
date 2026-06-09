@@ -71,6 +71,7 @@ setupMobileFooterVideo();
 setupPhotoCarousel();
 setupContactConsole();
 setupThemeMode();
+setupBioLangToggle();
 
 function renderNavigation() {
   const desktopNav = document.querySelector("#desktopNav");
@@ -687,4 +688,22 @@ function setupThemeMode() {
     if (label) label.textContent = theme === "day" ? "DAY" : "NIGHT";
     toggle?.setAttribute("aria-label", theme === "day" ? "Switch to night mode" : "Switch to day mode");
   }
+}
+
+function setupBioLangToggle() {
+  const btn = document.getElementById("bioLangToggle");
+  const cn = document.querySelector(".about__bio-cn");
+  const en = document.querySelector(".about__bio-en");
+  if (!btn || !cn || !en) return;
+
+  let lang = "zh";
+
+  btn.addEventListener("click", () => {
+    lang = lang === "zh" ? "en" : "zh";
+    const isCn = lang === "zh";
+    cn.classList.toggle("is-hidden", !isCn);
+    en.classList.toggle("is-hidden", isCn);
+    btn.querySelector(".bio-lang-btn__current").textContent = isCn ? "ZH" : "EN";
+    btn.querySelector(".bio-lang-btn__other").textContent = isCn ? "EN" : "ZH";
+  });
 }
