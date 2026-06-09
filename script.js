@@ -871,6 +871,29 @@ function setupLightbox() {
     lbNext.style.display = images.length < 2 ? "none" : "";
   }
 
+  function isInsideRenderedPhoto(event) {
+    if (!lbImg.naturalWidth || !lbImg.naturalHeight) return false;
+
+    const rect = lbImg.getBoundingClientRect();
+    const imageRatio = lbImg.naturalWidth / lbImg.naturalHeight;
+    const boxRatio = rect.width / rect.height;
+    let renderedWidth = rect.width;
+    let renderedHeight = rect.height;
+
+    if (imageRatio > boxRatio) {
+      renderedHeight = rect.width / imageRatio;
+    } else {
+      renderedWidth = rect.height * imageRatio;
+    }
+
+    const left = rect.left + (rect.width - renderedWidth) / 2;
+    const right = left + renderedWidth;
+    const top = rect.top + (rect.height - renderedHeight) / 2;
+    const bottom = top + renderedHeight;
+
+    return event.clientX >= left && event.clientX <= right && event.clientY >= top && event.clientY <= bottom;
+  }
+
   document.addEventListener("click", e => {
     const card = e.target.closest(".photo-card, .photo-slide");
     if (!card) return;
@@ -881,11 +904,11 @@ function setupLightbox() {
   });
 
   lbClose.addEventListener("click", close);
-  // Close on any tap outside the photo itself (backdrop, stage padding, meta).
-  // The stage fills the screen on mobile, so checking `e.target === lb` alone
-  // never fired there — close unless the tap landed on the image or a button.
+  // Close on taps outside the actually rendered photo, including the black bars
+  // created by object-fit on mobile.
   lb.addEventListener("click", e => {
-    if (e.target === lbImg || e.target.closest("button")) return;
+    if (e.target.closest("button")) return;
+    if (e.target === lbImg && isInsideRenderedPhoto(e)) return;
     close();
   });
   lbPrev.addEventListener("click", () => go(-1));
