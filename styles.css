@@ -1302,13 +1302,21 @@ body[data-theme="day"] .hero__shade {
   border-left: 2px solid transparent;
   transition:
     border-color 1.8s ease,
-    color 1.8s ease;
+    color 1.8s ease,
+    text-shadow 1.4s ease,
+    filter 1.4s ease;
 }
 
+/* Hover = active corrosion: the text fades and splits into a faint red/cyan
+   chromatic bleed, as if the ink is being worn off. Kept low-alpha so the
+   words stay fully legible. */
 .about__bio-cn p:hover,
 .about__bio-en p:hover {
   border-left-color: rgba(200, 20, 28, 0.52);
-  color: rgba(244, 244, 242, 0.62);
+  color: rgba(244, 244, 242, 0.6);
+  text-shadow:
+    0.035em 0 rgba(200, 20, 28, 0.24),
+    -0.022em 0.012em rgba(120, 180, 200, 0.16);
 }
 
 .bio-erode--closing {
@@ -1319,6 +1327,51 @@ body[data-theme="day"] .hero__shade {
 .bio-erode--closing:hover {
   color: rgba(138, 138, 136, 0.45) !important;
   border-left-color: rgba(200, 20, 28, 0.24) !important;
+}
+
+/* Idle "slow erosion": the panel border slowly corrodes toward red, and the
+   thematic paragraphs breathe with a faint chromatic shadow — desynced so the
+   surface looks like it is gradually wearing, never in lockstep. Hover pauses
+   the paragraph breath so the stronger hover bleed reads cleanly. */
+@keyframes bio-panel-corrode {
+  0%, 100% { border-color: var(--line-strong); }
+  50% { border-color: color-mix(in srgb, var(--signal-red) 20%, var(--line-strong)); }
+}
+
+@keyframes bio-erode-idle {
+  0%, 100% {
+    filter: none;
+    opacity: 1;
+  }
+  40% {
+    filter: drop-shadow(0.025em 0 rgba(200, 20, 28, 0.07)) brightness(0.98);
+    opacity: 0.965;
+  }
+  62% {
+    filter: drop-shadow(-0.02em 0.012em rgba(120, 180, 200, 0.05)) brightness(0.99);
+    opacity: 0.985;
+  }
+}
+
+.about__bio {
+  animation: bio-panel-corrode 17s ease-in-out infinite;
+}
+
+.bio-erode {
+  animation: bio-erode-idle 13s ease-in-out infinite;
+}
+
+.bio-erode:nth-of-type(odd) {
+  animation-duration: 15s;
+  animation-delay: -5s;
+}
+
+.bio-erode:nth-of-type(3n) {
+  animation-delay: -8.5s;
+}
+
+.bio-erode:hover {
+  animation-play-state: paused;
 }
 
 .about__bio-cn,

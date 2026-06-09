@@ -169,7 +169,7 @@ function setupPreloader() {
   maybeAttachIntroVideo();
 
   let value = 0;
-  const duration = 2300;
+  const duration = 4600;
   const started = performance.now();
 
   const tick = (now) => {
