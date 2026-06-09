@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#060606">
+    <meta
+      name="description"
+      content="Slow Erosion is a metalcore band from Wuhan, China, formed in 2023."
+    >
+    <meta property="og:title" content="Slow Erosion — Official Website">
+    <meta
+      property="og:description"
+      content="Metalcore from Wuhan, China. Violence and dream, oppression and weightlessness."
+    >
+    <meta property="og:image" content="./assets/img/logo-red-vivid.png?v=20260609-07">
+    <title>Slow Erosion — Official Website</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/img/favicon-window-32.png?v=20260609-07">
+    <link rel="apple-touch-icon" href="./assets/img/favicon-window-192.png?v=20260609-07">
+    <link rel="preload" href="./styles.css?v=20260609-13" as="style">
+    <link rel="preload" href="./assets/img/logo-red-vivid.png?v=20260609-07" as="image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap">
+    <link rel="stylesheet" href="./styles.css?v=20260609-13">
+  </head>
+  <body>
+    <svg class="svg-filters" aria-hidden="true" focusable="false">
+      <filter id="nav-logo-warp">
+        <feTurbulence type="fractalNoise" baseFrequency="0.018 0.18" numOctaves="2" seed="7" result="noise"/>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.6" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+    </svg>
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="preloader" id="preloader" aria-live="polite" aria-label="Slow Erosion site loading">
+      <div class="preloader__grid" aria-hidden="true"></div>
+      <div class="preloader__mark">
+        <video class="preloader__video is-empty" id="introVideo" muted playsinline preload="auto"></video>
+        <div class="preloader__fallback" data-decode="SLOW EROSION">SLOW EROSION</div>
+      </div>
+      <div class="preloader__meta">
+        <span id="loadPercent">00</span>
+        <span>SYS_CORROSION_BOOT</span>
+        <span>WUHAN_CN / EST.2023</span>
+      </div>
+      <div class="preloader__bar" aria-hidden="true">
+        <span id="loadBar"></span>
+      </div>
+    </div>
+
+    <div class="cursor" aria-hidden="true"></div>
+    <div class="cursor cursor--dot" aria-hidden="true"></div>
+
+    <div class="atmosphere" aria-hidden="true">
+      <div class="grain"></div>
+      <div class="scanlines"></div>
+      <div class="vignette"></div>
+    </div>
+
+    <header class="mobile-header" aria-label="Mobile site navigation">
+      <a class="mobile-header__brand" href="#home" data-magnetic>
+        <span class="brand-cn">慢失性</span>
+        <strong>SLOW EROSION</strong>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-magnetic>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <button class="mode-toggle" type="button" id="modeToggle" aria-label="Switch to day mode" data-magnetic>
+      <span class="mode-toggle__index">MODE</span>
+      <span class="mode-toggle__label">NIGHT</span>
+    </button>
+
+    <aside class="sidebar" aria-label="Primary navigation">
+      <a class="sidebar__brand" href="#home" aria-label="Slow Erosion home" data-magnetic>
+        <span class="brand-cn">慢失性</span>
+        <strong>SLOW EROSION</strong>
+      </a>
+      <nav>
+        <ul class="nav-list" id="desktopNav"></ul>
+      </nav>
+      <div class="sidebar__readout" aria-hidden="true">
+        <span>CN-WUHAN</span>
+        <span>LAT 30.5928</span>
+        <span>LONG 114.3055</span>
+        <span>SIGNAL 04FD8E0</span>
+      </div>
+    </aside>
+
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <div class="mobile-menu__noise" aria-hidden="true"></div>
+      <div class="mobile-menu__head">
+        <span>PRIMARY NAVIGATION</span>
+        <span>INDX.00</span>
+      </div>
+      <nav aria-label="Mobile primary navigation">
+        <ul class="mobile-menu__list" id="mobileNav"></ul>
+      </nav>
+    </div>
+
+    <main id="main">
+      <section class="hero section" id="home" data-section="01" aria-label="Slow Erosion hero">
+        <video
+          class="hero__video"
+          id="heroVideo"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          poster="./assets/img/hero-poster.jpg"
+          aria-label="Slow Erosion background video"
+        >
+          <source src="./assets/video/hero-bg.mp4?v=20260609-13" type="video/mp4">
+        </video>
+        <div class="hero__shade" aria-hidden="true"></div>
+        <div class="hero__grid" aria-hidden="true"></div>
+
+        <div class="hero__center">
+          <p class="eyebrow hero__eyebrow" data-decode="MODERN SYSTEM SIGNAL LOSS">MODERN SYSTEM SIGNAL LOSS</p>
+          <picture class="hero__logo-wrap">
+            <source srcset="./assets/img/logo-red-vivid.webp?v=20260609-07" type="image/webp">
+            <img
+              class="hero__logo"
+              src="./assets/img/logo-red-vivid.png?v=20260609-07"
+              alt="Slow Erosion"
+              width="1800"
+              height="536"
+              decoding="async"
+            >
+          </picture>
+          <h1 class="hero__fallback-logo glitch-title" data-text="SLOW EROSION" data-decode="SLOW EROSION">
+            SLOW EROSION
+          </h1>
+          <p class="hero__tagline">
+            <span class="brand-cn">慢失性</span>
+            <span>// METALCORE // WUHAN, CN // EST.2023</span>
+          </p>
+        </div>
+
+        <div class="hero__meta hero__meta--tl" aria-hidden="true">
+          <span>SE-HOME//00.01</span>
+          <span>AGENCY_DECAY: 73%</span>
+        </div>
+        <div class="hero__meta hero__meta--tr" aria-hidden="true">
+          <span id="systemClock">2026-06-09 00:00:00</span>
+          <span>BITRATE: UNSTABLE</span>
+        </div>
+        <div class="hero__meta hero__meta--br" aria-hidden="true">
+          <span>SCROLL</span>
+          <span>DOWN_SIGNAL</span>
+        </div>
+        <a class="scroll-cue" href="#erosion" data-magnetic aria-label="Scroll to Slow Erosion image section">
+          <span></span>
+          <em>SCROLL</em>
+        </a>
+      </section>
+
+      <section class="corrosion section" id="erosion" data-section="02" aria-label="Slow Erosion corrosion image">
+        <div class="corrosion__sticky">
+          <div class="corrosion__frame">
+            <picture>
+              <source srcset="./assets/img/band-01.webp" type="image/webp">
+              <img
+                src="./assets/img/band-01.jpg"
+                alt="Slow Erosion band members in a ruined outdoor space"
+                loading="lazy"
+                decoding="async"
+              >
+            </picture>
+            <div class="corrosion__blocks" aria-hidden="true">
+              <span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+          <div class="corrosion__type" aria-hidden="true">
+            <span class="corrosion__word corrosion__word--slow glitch-title" data-text="SLOW">SLOW</span>
+            <span class="regulation-field">
+              <i></i><i></i><i></i><i></i>
+            </span>
+            <span class="corrosion__word corrosion__word--erosion glitch-title" data-text="EROSION">EROSION</span>
+          </div>
+          <div class="corrosion__caption">
+            <span>INDX.02 / STILL FRAME</span>
+            <p>
+              VIDEO SIGNAL COLLAPSES INTO A SINGLE COLD FRAME. THE IMAGE STAYS,
+              BUT ITS EDGES KEEP LOSING THEMSELVES.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="about section" id="about" data-section="03" aria-labelledby="aboutTitle">
+        <div class="about__header">
+          <p class="eyebrow" data-decode="ABOUT / 01 — THE BAND">ABOUT / 01 — THE BAND</p>
+          <h2 id="aboutTitle" class="about__title glitch-title" data-text="THE BAND" data-decode="THE BAND">
+            THE BAND
+          </h2>
+        </div>
+
+        <div class="about__grid">
+          <article class="about__bio">
+            <p data-decode>
+              Slow Erosion is a metalcore band from Wuhan, China, formed in 2023. Rooted in metalcore and shaped by elements of black metal, post-rock, and shoegaze, the band explores the slow loss of agency, emotion, and resistance under modern systems, building a sound between violence and dream, oppression and weightlessness.
+            </p>
+          </article>
+
+          <aside class="about__image-panel" aria-label="Slow Erosion image reference">
+            <picture>
+              <source srcset="./assets/img/band-02.webp" type="image/webp">
+              <img
+                src="./assets/img/band-02.png"
+                alt="Slow Erosion band promotional image"
+                loading="lazy"
+                decoding="async"
+              >
+            </picture>
+            <div class="about__image-meta">
+              <span>DATASET: EMOTION / RESISTANCE</span>
+              <span>NOISE: 18.6DB</span>
+            </div>
+          </aside>
+        </div>
+
+        <ul class="keyword-strip" aria-label="Slow Erosion themes">
+          <li>agency</li>
+          <li>emotion</li>
+          <li>resistance</li>
+          <li>violence</li>
+          <li>dream</li>
+          <li>oppression</li>
+          <li>weightlessness</li>
+        </ul>
+      </section>
+
+      <section class="photo section" id="photo" data-section="04" aria-labelledby="photoTitle">
+        <div class="photo__header">
+          <p class="eyebrow" data-decode="PH0T0 / FIELD CAPTURE">PH0T0 / FIELD CAPTURE</p>
+          <h2 id="photoTitle" class="photo__title glitch-title" data-text="PHOTO" data-decode="PHOTO">
+            PHOTO
+          </h2>
+          <p class="photo__intro">
+            LIVE SIGNAL ARCHIVE — STAGE FRAMES FROM SLOW EROSION SHOWS. THE TOP
+            REEL CYCLES ON ITS OWN; SCROLL FOR THE FULL STREAM.
+          </p>
+        </div>
+
+        <div class="photo-carousel" id="photoCarousel" aria-roledescription="carousel" aria-label="Slow Erosion live photo slideshow">
+          <div class="photo-carousel__viewport">
+            <figure class="photo-slide is-active">
+              <picture>
+                <source srcset="./assets/img/live-01.webp" type="image/webp">
+                <img src="./assets/img/live-01.jpg" alt="Slow Erosion live on stage" decoding="async">
+              </picture>
+            </figure>
+            <figure class="photo-slide">
+              <picture>
+                <source srcset="./assets/img/live-02.webp" type="image/webp">
+                <img src="./assets/img/live-02.jpg" alt="Slow Erosion live performance" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+            <figure class="photo-slide">
+              <picture>
+                <source srcset="./assets/img/live-03.webp" type="image/webp">
+                <img src="./assets/img/live-03.jpg" alt="Slow Erosion stage lights" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+            <figure class="photo-slide">
+              <picture>
+                <source srcset="./assets/img/live-04.webp" type="image/webp">
+                <img src="./assets/img/live-04.jpg" alt="Slow Erosion crowd and stage" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+            <figure class="photo-slide">
+              <picture>
+                <source srcset="./assets/img/live-05.webp" type="image/webp">
+                <img src="./assets/img/live-05.jpg" alt="Slow Erosion guitarist live" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+            <figure class="photo-slide">
+              <picture>
+                <source srcset="./assets/img/live-06.webp" type="image/webp">
+                <img src="./assets/img/live-06.jpg" alt="Slow Erosion vocalist live" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+            <div class="photo-carousel__scan" aria-hidden="true"></div>
+            <div class="photo-carousel__corner" aria-hidden="true"></div>
+            <button class="photo-carousel__btn photo-carousel__btn--prev" id="photoPrev" type="button" aria-label="Previous photo" data-magnetic>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="photo-carousel__btn photo-carousel__btn--next" id="photoNext" type="button" aria-label="Next photo" data-magnetic>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 6 15 12 9 18"/></svg>
+            </button>
+          </div>
+          <div class="photo-carousel__bar">
+            <span class="photo-carousel__index"><i id="photoIndex">01</i> / <em id="photoTotal">06</em></span>
+            <div class="photo-carousel__dots" id="photoDots" role="tablist" aria-label="Select live photo"></div>
+            <span class="photo-carousel__meta">AUTO_CYCLE // STAGE_SIGNAL</span>
+          </div>
+        </div>
+
+        <div class="photo-stream">
+          <figure class="photo-card" data-reveal>
+            <picture>
+              <source srcset="./assets/img/live-07.webp" type="image/webp">
+              <img src="./assets/img/live-07.jpg" alt="Slow Erosion live frame" loading="lazy" decoding="async">
+            </picture>
+            <figcaption><span>SE-LIVE // 07</span><span>STAGE / FRONT</span></figcaption>
+          </figure>
+          <figure class="photo-card photo-card--tall" data-reveal>
+            <picture>
+              <source srcset="./assets/img/live-12.webp" type="image/webp">
+              <img src="./assets/img/live-12.jpg" alt="Slow Erosion vertical live frame" loading="lazy" decoding="async">
+            </picture>
+            <figcaption><span>SE-LIVE // 12</span><span>VERTICAL / RAW</span></figcaption>
+          </figure>
+          <figure class="photo-card" data-reveal>
+            <picture>
+              <source srcset="./assets/img/live-08.webp" type="image/webp">
+              <img src="./assets/img/live-08.jpg" alt="Slow Erosion stage wide" loading="lazy" decoding="async">
+            </picture>
+            <figcaption><span>SE-LIVE // 08</span><span>WIDE / SMOKE</span></figcaption>
+          </figure>
+          <figure class="photo-card" data-reveal>
+            <picture>
+              <source srcset="./assets/img/live-09.webp" type="image/webp">
+              <img src="./assets/img/live-09.jpg" alt="Slow Erosion lights and band" loading="lazy" decoding="async">
+            </picture>
+            <figcaption><span>SE-LIVE // 09</span><span>LIGHT / GRAIN</span></figcaption>
+          </figure>
+          <figure class="photo-card photo-card--tall" data-reveal>
+            <picture>
+              <source srcset="./assets/img/live-13.webp" type="image/webp">
+              <img src="./assets/img/live-13.jpg" alt="Slow Erosion vertical stage frame" loading="lazy" decoding="async">
+            </picture>
+            <figcaption><span>SE-LIVE // 13</span><span>VERTICAL / MOTION</span></figcaption>
+          </figure>
+          <figure class="photo-card" data-reveal>
+            <picture>
+              <source srcset="./assets/img/live-10.webp" type="image/webp">
+              <img src="./assets/img/live-10.jpg" alt="Slow Erosion live crowd" loading="lazy" decoding="async">
+            </picture>
+            <figcaption><span>SE-LIVE // 10</span><span>CROWD / NOISE</span></figcaption>
+          </figure>
+          <figure class="photo-card" data-reveal>
+            <picture>
+              <source srcset="./assets/img/live-11.webp" type="image/webp">
+              <img src="./assets/img/live-11.jpg" alt="Slow Erosion performance frame" loading="lazy" decoding="async">
+            </picture>
+            <figcaption><span>SE-LIVE // 11</span><span>STAGE / EDGE</span></figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="release section" id="music" data-section="05" aria-labelledby="releaseTitle">
+        <div class="release__shell">
+          <div class="release__meta">
+            <p class="eyebrow" data-decode="MU5IC / LATEST SIGNAL">MU5IC / LATEST SIGNAL</p>
+            <h2 id="releaseTitle" class="release__title glitch-title" data-text="FEVER DREAM" data-decode="FEVER DREAM">
+              FEVER DREAM
+            </h2>
+            <p>
+              SINGLE COVER ARTIFACT. ROUTES ARE TEMPORARY UNTIL THE FINAL STREAMING
+              LINKS ARE CONNECTED.
+            </p>
+            <a class="release__button" href="#" data-nav="music" data-magnetic>
+              <span>STREAM_PLACEHOLDER</span>
+              <strong>OPEN SIGNAL -></strong>
+            </a>
+          </div>
+
+          <figure class="release__cover">
+            <picture>
+              <source srcset="./assets/img/fever-dream-cover.webp" type="image/webp">
+              <img
+                src="./assets/img/fever-dream-cover.png"
+                alt="Fever Dream single cover artwork"
+                loading="lazy"
+                decoding="async"
+              >
+            </picture>
+            <figcaption>
+              <span>FILE: FEVERDREAM_SINGLE_COVER</span>
+              <span>STATUS: ROUTE_PENDING</span>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="contact" aria-label="Slow Erosion footer">
+      <video
+        class="footer__mobile-video"
+        id="mobileFooterVideo"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="none"
+        aria-hidden="true"
+      ></video>
+      <div class="footer__mobile-video-shade" aria-hidden="true"></div>
+
+      <div class="footer__top">
+        <a class="footer__logo" href="#home" aria-label="Slow Erosion home" data-magnetic>
+          <picture>
+            <source srcset="./assets/img/logo-default.webp?v=20260609-05" type="image/webp">
+            <img class="footer__logo-img" src="./assets/img/logo-default.png?v=20260609-05" alt="Slow Erosion" loading="lazy" decoding="async">
+          </picture>
+          <span class="brand-cn">慢失性</span>
+        </a>
+        <p>
+          SIGNAL REMAINS OPEN. SOCIAL CHANNELS ARE PLACEHOLDERS UNTIL FINAL ROUTES
+          ARE CONNECTED.
+        </p>
+      </div>
+
+      <nav aria-label="Social links">
+        <ul class="social-grid" id="socialGrid"></ul>
+      </nav>
+
+      <section class="contact-console" aria-label="Contact Slow Erosion">
+        <div class="wechat-card">
+          <p class="eyebrow">WECHAT / DIRECT SIGNAL</p>
+          <h2>WECHAT WINDOW</h2>
+          <p>OPEN A SMALL CONTACT WINDOW FOR WECHAT ID / QR PLACEHOLDER.</p>
+          <button class="contact-button" type="button" data-open-wechat data-magnetic>
+            OPEN WECHAT WINDOW
+          </button>
+        </div>
+
+        <form class="message-form" id="messageForm">
+          <p class="eyebrow">BACKSTAGE / MESSAGE INPUT</p>
+          <label>
+            <span>NAME / CONTACT</span>
+            <input name="name" type="text" maxlength="80" autocomplete="name" placeholder="YOUR NAME OR CONTACT">
+          </label>
+          <label>
+            <span>MESSAGE</span>
+            <textarea name="message" maxlength="1200" required placeholder="LEAVE A MESSAGE FOR SLOW EROSION"></textarea>
+          </label>
+          <button class="contact-button" type="submit" data-magnetic>SEND TO BACKSTAGE</button>
+          <p class="message-form__status" id="messageStatus" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <div class="wechat-window" id="wechatWindow" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="wechatTitle">
+        <div class="wechat-window__panel">
+          <button class="wechat-window__close" type="button" aria-label="Close WeChat window" data-close-wechat>×</button>
+          <p class="eyebrow">CONTACT / WECHAT</p>
+          <picture>
+            <source srcset="./assets/img/logo-red-vivid.webp?v=20260609-07" type="image/webp">
+            <img class="wechat-window__logo" src="./assets/img/logo-red-vivid.png?v=20260609-07" alt="Slow Erosion logo" loading="lazy" decoding="async">
+          </picture>
+          <h2 id="wechatTitle">SLOW EROSION</h2>
+          <picture class="wechat-window__qr" aria-label="Slow Erosion WeChat QR code">
+            <source srcset="./assets/img/wechat-qr.webp?v=20260609-07" type="image/webp">
+            <img src="./assets/img/wechat-qr.jpg?v=20260609-07" alt="SlowErosion 乐队 WeChat QR code" loading="lazy" decoding="async">
+          </picture>
+          <p>SCAN THE QR CODE TO CONTACT SLOW EROSION ON WECHAT.</p>
+        </div>
+      </div>
+
+      <div class="footer__system">
+        <span>© 2026 SLOW EROSION — <span class="brand-cn">慢失性</span></span>
+        <span>BUILD V0.1 / WUHAN, CN</span>
+        <a href="#home" data-magnetic>BACK TO TOP ↑</a>
+      </div>
+    </footer>
+
+    <script src="./script.js?v=20260609-13" type="module"></script>
+  </body>
+</html>

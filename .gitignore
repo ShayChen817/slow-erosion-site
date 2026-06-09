@@ -1,0 +1,21 @@
+# source masters (too large for git)
+背景视频.mp4
+手机版MV切片无文字.mp4
+logo动画效果黑色背景.mkv
+MV/
+SE网站图片/
+SE演出照合集/
+
+# deps & logs
+node_modules/
+*.log
+server.out.log
+server.err.log
+
+# temp / artifacts
+_*.ps1
+_*.sh
+artifacts-*.png
+FeverDream单曲封面.png
+SE演出照合集.zip
+SlowErosion_官网_Codex设计Prompt.md
