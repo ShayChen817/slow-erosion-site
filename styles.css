@@ -1865,13 +1865,6 @@ body[data-theme="day"] .hero__shade {
   letter-spacing: -0.085em;
 }
 
-.release__title-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  gap: clamp(0.9rem, 3vw, 2.4rem);
-}
-
 .release__note {
   display: grid;
   gap: 0.34rem;
@@ -1974,20 +1967,23 @@ body[data-theme="day"] .release__note-cn {
 }
 
 .release__cover {
-  position: relative;
   margin: 0;
-  overflow: hidden;
   border: 1px solid var(--line-strong);
   background: var(--black);
   box-shadow: 0 1.2rem 3.8rem rgba(0, 0, 0, 0.28);
+}
+
+.release__cover-art {
+  position: relative;
+  overflow: hidden;
 }
 
 .release__cover-link {
   display: block;
 }
 
-.release__cover::before,
-.release__cover::after {
+.release__cover-art::before,
+.release__cover-art::after {
   position: absolute;
   inset: 0;
   z-index: 2;
@@ -1995,7 +1991,7 @@ body[data-theme="day"] .release__note-cn {
   pointer-events: none;
 }
 
-.release__cover::before {
+.release__cover-art::before {
   opacity: 0.16;
   background:
     linear-gradient(90deg, transparent 0 62%, rgba(244, 244, 242, 0.14) 62.1% 62.7%, transparent 62.8%),
@@ -2003,12 +1999,13 @@ body[data-theme="day"] .release__note-cn {
   mix-blend-mode: screen;
 }
 
-.release__cover::after {
+.release__cover-art::after {
   border: 1px solid rgba(244, 244, 242, 0.2);
   box-shadow: inset 0 0 1.7rem rgba(0, 0, 0, 0.32);
 }
 
 .release__cover img {
+  display: block;
   width: 100%;
   min-height: 31rem;
   object-fit: cover;
@@ -2033,6 +2030,17 @@ body[data-theme="day"] .release__note-cn {
   gap: 1rem;
   color: rgba(244, 244, 242, 0.72);
   font-size: 0.62rem;
+}
+
+.release__cover-note {
+  position: relative;
+  z-index: 1;
+  max-width: none;
+  margin: 0;
+  padding: 0.95rem 1rem 1rem;
+  border-top: 1px solid var(--line);
+  border-left: 0;
+  background: rgba(0, 0, 0, 0.34);
 }
 
 .photo {
