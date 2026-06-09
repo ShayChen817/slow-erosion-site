@@ -76,6 +76,7 @@ setupContactConsole();
 setupThemeMode();
 setupBioLangToggle();
 setupLightbox();
+setupFullscreenMode();
 
 function renderNavigation() {
   const desktopNav = document.querySelector("#desktopNav");
@@ -992,4 +993,42 @@ function setupLightbox() {
     const dx = e.changedTouches[0].clientX - touchStartX;
     if (Math.abs(dx) > 48) go(dx < 0 ? 1 : -1);
   });
+}
+
+function setupFullscreenMode() {
+  const audio = document.getElementById("fsAudio");
+  const triggerBtns = [
+    document.getElementById("fsBtn"),
+    document.getElementById("mvPreviewPlay"),
+  ].filter(Boolean);
+  if (!audio || !triggerBtns.length) return;
+
+  function enter() {
+    const req = document.documentElement.requestFullscreen
+      || document.documentElement.webkitRequestFullscreen;
+    if (req) {
+      req.call(document.documentElement).then(() => {
+        document.documentElement.style.zoom = "0.75";
+        audio.play().catch(() => {});
+      }).catch(() => {
+        document.documentElement.style.zoom = "0.75";
+        audio.play().catch(() => {});
+      });
+    } else {
+      document.documentElement.style.zoom = "0.75";
+      audio.play().catch(() => {});
+    }
+  }
+
+  function onFullscreenChange() {
+    const isFs = !!(document.fullscreenElement || document.webkitFullscreenElement);
+    if (!isFs) {
+      document.documentElement.style.zoom = "";
+      audio.pause();
+    }
+  }
+
+  triggerBtns.forEach(btn => btn.addEventListener("click", enter));
+  document.addEventListener("fullscreenchange", onFullscreenChange);
+  document.addEventListener("webkitfullscreenchange", onFullscreenChange);
 }
