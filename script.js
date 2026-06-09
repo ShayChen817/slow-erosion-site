@@ -25,7 +25,7 @@ const NAV_ITEMS = [
 
 const SOCIAL_LINKS = [
   { platform: "spotify", label: "Spotify", meta: "STREAM", href: "#" },
-  { platform: "youtube", label: "YouTube", meta: "VIDEO", href: "#" },
+  { platform: "youtube", label: "YouTube", meta: "VIDEO", href: "https://www.youtube.com/@SlowErosionCN" },
   { platform: "netease", label: "NetEase", meta: "网易云音乐", href: "https://music.163.com/#/artist?id=124932936" },
   { platform: "xiaohongshu", label: "RED", meta: "小红书", href: "https://www.xiaohongshu.com/user/profile/63be08f700000000260070ca?xsec_token=ABTiA3ri5X8CJ06IO77DzhbUDaIrMtMRmbvbZVZW4DcPY=&xsec_source=pc_search" },
   { platform: "bilibili", label: "Bilibili", meta: "CN VIDEO", href: "https://space.bilibili.com/3493089568098826?spm_id_from=333.1007.0.0" },
