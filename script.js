@@ -829,17 +829,19 @@ function setupLightbox() {
       const src = img.src;
       const webpSource = img.closest("picture")?.querySelector("source[type='image/webp']")?.srcset;
       const alt = img.alt || "";
-      const caption = img.closest("figcaption")
-        ? Array.from(img.closest("figure")?.querySelectorAll("figcaption span") || []).map(s => s.textContent).join(" — ")
+      const figure = img.closest("figure");
+      const caption = figure?.querySelector("figcaption")
+        ? Array.from(figure.querySelectorAll("figcaption span")).map(s => s.textContent).join(" — ")
         : alt;
-      if (src && !images.some(i => i.src === src)) {
-        images.push({ src: webpSource || src, alt, caption });
+      if (src) {
+        images.push({ element: img, src: webpSource || src, alt, caption });
       }
     });
   }
 
   function open(index) {
     buildImageList();
+    if (!images.length) return;
     current = ((index % images.length) + images.length) % images.length;
     show(current);
     lb.classList.add("is-open");
@@ -874,7 +876,7 @@ function setupLightbox() {
     if (!card) return;
     buildImageList();
     const img = card.querySelector("img");
-    const idx = images.findIndex(i => i.alt === img?.alt || i.src.includes(img?.src?.split("/").pop()?.split("?")[0]));
+    const idx = images.findIndex(i => i.element === img);
     open(idx >= 0 ? idx : 0);
   });
 
