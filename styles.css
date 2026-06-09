@@ -228,12 +228,26 @@ body.is-hovering .cursor {
   border-color: var(--accent);
 }
 
-.mode-toggle {
+.nav-btns {
   position: fixed;
-  top: clamp(4.8rem, 7vh, 5.8rem);
-  right: auto;
+  top: clamp(1rem, 2vh, 1.4rem);
   left: clamp(0.72rem, 1.2vw, 1rem);
   z-index: 8200;
+  display: flex;
+  flex-direction: row;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+body.menu-open .nav-btns {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-0.5rem);
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.mode-toggle {
+  position: static;
   display: inline-flex;
   align-items: center;
   gap: 0.34rem;
@@ -274,10 +288,7 @@ body[data-theme="day"] .mode-toggle {
 }
 
 .fs-btn {
-  position: fixed;
-  top: clamp(7rem, 10vh, 8rem);
-  left: clamp(0.72rem, 1.2vw, 1rem);
-  z-index: 8200;
+  position: static;
   display: inline-flex;
   align-items: center;
   gap: 0.34rem;
@@ -3557,29 +3568,10 @@ body:has(.lightbox.is-open) .photo-carousel__corner {
     display: flex;
   }
 
-  .mode-toggle {
-    top: 4.75rem;
-    left: 0.85rem;
-    right: auto;
-    z-index: 7700;
-  }
-
-  body.menu-open .mode-toggle {
-    opacity: 0;
-    pointer-events: none;
-    transform: translateX(-0.5rem);
-  }
-
-  .fs-btn {
-    top: 6.9rem;
+  .nav-btns {
+    top: 4.6rem;
     left: 0.85rem;
     z-index: 7700;
-  }
-
-  body.menu-open .fs-btn {
-    opacity: 0;
-    pointer-events: none;
-    transform: translateX(-0.5rem);
   }
 
   .sidebar {
