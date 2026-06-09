@@ -1841,6 +1841,13 @@ body[data-theme="day"] .hero__shade {
   margin-bottom: clamp(1.6rem, 4vw, 3rem);
 }
 
+.photo__title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: clamp(0.9rem, 3vw, 2.6rem);
+}
+
 .photo__title {
   width: fit-content;
   margin: 0;
@@ -1848,6 +1855,42 @@ body[data-theme="day"] .hero__shade {
   font-size: clamp(4.5rem, 16vw, 15rem);
   line-height: 0.72;
   letter-spacing: -0.085em;
+}
+
+/* Small bilingual note tucked beside the PHOTO title, nodding to the
+   hover-restores-color interaction on the photos below. */
+.photo__note {
+  display: grid;
+  gap: 0.34rem;
+  max-width: 20rem;
+  margin: 0 0 clamp(0.3rem, 1vw, 0.9rem);
+  padding-left: clamp(0.9rem, 2vw, 1.4rem);
+  border-left: 1px solid var(--line);
+}
+
+.photo__note-en {
+  color: var(--muted);
+  font-size: clamp(0.66rem, 0.9vw, 0.78rem);
+  letter-spacing: 0.12em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  transition: color 320ms ease;
+}
+
+.photo__note-cn {
+  color: rgba(244, 244, 242, 0.42);
+  font-size: clamp(0.62rem, 0.85vw, 0.72rem);
+  letter-spacing: 0.14em;
+  line-height: 1.6;
+}
+
+body[data-theme="day"] .photo__note-cn {
+  color: rgba(8, 8, 8, 0.5);
+}
+
+/* The note itself warms up on hover, echoing the photos gaining color */
+.photo__note:hover .photo__note-en {
+  color: var(--signal-red);
 }
 
 .photo__intro {
