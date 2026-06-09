@@ -15,8 +15,9 @@ jobs:
 
       - name: Install ossutil
         run: |
-          curl -sL https://gosspublic.alicdn.com/ossutil/1.7.19/ossutil64 -o ossutil
+          curl -fsSL https://gosspublic.alicdn.com/ossutil/1.7.18/ossutil64 -o ossutil
           chmod +x ossutil
+          ./ossutil --version
 
       - name: Configure ossutil
         run: |
