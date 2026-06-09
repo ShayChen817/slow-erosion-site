@@ -445,15 +445,30 @@ body[data-theme="day"] .sidebar {
 
 .menu-toggle {
   position: relative;
-  width: 3rem;
+  width: 5.15rem;
   height: 2.4rem;
+  overflow: hidden;
   border: 1px solid var(--line);
+}
+
+.menu-toggle::after {
+  position: absolute;
+  top: 50%;
+  left: 0.68rem;
+  content: "MENU";
+  color: var(--fg);
+  font-size: 0.56rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  line-height: 1;
+  transform: translateY(-50%);
+  animation: menu-signal-red 5.2s steps(1, end) infinite;
 }
 
 .menu-toggle span {
   position: absolute;
-  left: 0.7rem;
-  width: 1.6rem;
+  right: 0.68rem;
+  width: 1.22rem;
   height: 1px;
   background: var(--fg);
   transition: transform 220ms var(--ease-out), top 220ms var(--ease-out);
@@ -3292,6 +3307,24 @@ body:has(.lightbox.is-open) .photo-carousel__corner {
 @keyframes scroll-line {
   0% { transform: translateY(-120%); }
   100% { transform: translateY(330%); }
+}
+
+@keyframes menu-signal-red {
+  0%, 62%, 68%, 100% {
+    color: var(--fg);
+    text-shadow: none;
+  }
+  64%, 66% {
+    color: var(--signal-red);
+    text-shadow: 0 0 0.8rem rgba(200, 20, 28, 0.5);
+  }
+  82% {
+    color: var(--muted);
+  }
+  84% {
+    color: var(--signal-red);
+    text-shadow: 0 0 0.65rem rgba(200, 20, 28, 0.42);
+  }
 }
 
 @keyframes block-slip {
