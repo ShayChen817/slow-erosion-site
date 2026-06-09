@@ -999,11 +999,11 @@ function setupFullscreenMode() {
   const audio = document.getElementById("fsAudio");
   const triggerBtns = [
     document.getElementById("fsBtn"),
-    document.getElementById("mvPreviewPlay"),
   ].filter(Boolean);
   if (!audio || !triggerBtns.length) return;
 
   function enter() {
+    window.scrollTo({ top: 0, behavior: "instant" });
     const req = document.documentElement.requestFullscreen
       || document.documentElement.webkitRequestFullscreen;
     if (req) {
