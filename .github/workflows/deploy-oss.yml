@@ -1,0 +1,35 @@
+name: Deploy to Aliyun OSS
+
+# 每次 push 到 main 分支，自动把网站文件同步到阿里云 OSS（香港）
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}   # 也允许在 Actions 页面手动触发
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install ossutil
+        run: |
+          curl -sL https://gosspublic.alicdn.com/ossutil/1.7.19/ossutil64 -o ossutil
+          chmod +x ossutil
+
+      - name: Configure ossutil
+        run: |
+          ./ossutil config \
+            -e "${{ secrets.OSS_ENDPOINT }}" \
+            -i "${{ secrets.OSS_KEY_ID }}" \
+            -k "${{ secrets.OSS_KEY_SECRET }}"
+
+      # 只上传网站真正需要的文件，绝不碰 .git / 源素材 / 内部文档
+      - name: Upload site files
+        run: |
+          BUCKET="oss://${{ secrets.OSS_BUCKET }}"
+          ./ossutil cp index.html "$BUCKET/index.html" -f
+          ./ossutil cp styles.css "$BUCKET/styles.css" -f
+          ./ossutil cp script.js  "$BUCKET/script.js"  -f
+          ./ossutil cp -r -f --update assets/ "$BUCKET/assets/"
