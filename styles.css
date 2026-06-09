@@ -7,7 +7,7 @@
   --line-strong: rgba(244, 244, 242, 0.42);
   --accent: #d7d2c4;
   --glitch-pink: #f4f4f2;
-  --signal-red: #8f171b;
+  --signal-red: #c8141c;
   --panel: rgba(6, 6, 6, 0.72);
   --sidebar: clamp(8.5rem, 15vw, 18rem);
   --page-pad: clamp(1rem, 3vw, 3rem);
@@ -54,7 +54,7 @@ body[data-theme="day"] {
   --line: rgba(8, 8, 8, 0.16);
   --line-strong: rgba(8, 8, 8, 0.34);
   background:
-    radial-gradient(circle at 72% 6%, rgba(143, 23, 27, 0.028), transparent 25rem),
+    radial-gradient(circle at 72% 6%, rgba(200, 20, 28, 0.028), transparent 25rem),
     radial-gradient(circle at 5% 92%, rgba(8, 8, 8, 0.026), transparent 22rem),
     #f2f1eb;
 }
@@ -291,7 +291,7 @@ body[data-theme="day"] .mode-toggle {
   inset: 0;
   opacity: 0.42;
   background:
-    linear-gradient(90deg, transparent 0 49.7%, rgba(143, 23, 27, 0.16) 49.8% 50%, transparent 50.2%),
+    linear-gradient(90deg, transparent 0 49.7%, rgba(200, 20, 28, 0.16) 49.8% 50%, transparent 50.2%),
     linear-gradient(rgba(244, 244, 242, 0.08) 1px, transparent 1px),
     linear-gradient(90deg, rgba(244, 244, 242, 0.08) 1px, transparent 1px);
   background-size: 100% 100%, 100% 5rem, 8.333vw 100%;
@@ -731,7 +731,7 @@ body[data-theme="day"] .sidebar {
 .nav-link:hover .nav-logo-rail i,
 .nav-link.is-active .nav-logo-rail i {
   border-color: var(--signal-red);
-  background: rgba(143, 23, 27, 0.18);
+  background: rgba(200, 20, 28, 0.18);
   opacity: 0.86;
 }
 
@@ -877,8 +877,8 @@ body[data-theme="day"] .hero__shade {
 }
 
 .hero__logo-wrap {
-  width: min(68vw, 55rem);
-  max-width: calc(100vw - var(--sidebar) - 9vw);
+  width: min(78vw, 64rem);
+  max-width: calc(100vw - var(--sidebar) - 7vw);
   transform: translate3d(0, calc(var(--corrode) * 1.5rem), 0);
   animation: logo-breathe 5.6s ease-in-out infinite;
 }
@@ -887,11 +887,13 @@ body[data-theme="day"] .hero__shade {
   width: 100%;
   height: auto;
   margin: 0 auto;
-  opacity: 0.94;
+  opacity: 0.97;
   filter:
-    drop-shadow(0 0 0.9rem rgba(244, 244, 242, 0.22))
-    drop-shadow(0.14rem 0 0 rgba(244, 244, 242, 0.1))
-    drop-shadow(-0.14rem 0 0 rgba(138, 138, 136, 0.12));
+    saturate(1.5)
+    brightness(0.88)
+    drop-shadow(0 0 1.1rem rgba(200, 20, 28, 0.28))
+    drop-shadow(0.14rem 0 0 rgba(244, 244, 242, 0.08))
+    drop-shadow(-0.14rem 0 0 rgba(138, 138, 136, 0.08));
 }
 
 .hero__fallback-logo {
@@ -1119,7 +1121,7 @@ body[data-theme="day"] .hero__shade {
 }
 
 .corrosion__word::after {
-  color: rgba(143, 23, 27, 0.2);
+  color: rgba(200, 20, 28, 0.2);
   clip-path: inset(54% 0 24% 0);
   transform: translateX(-0.04em);
   opacity: 0.18;
@@ -1127,7 +1129,7 @@ body[data-theme="day"] .hero__shade {
 }
 
 .corrosion__word.is-glitching::after {
-  color: rgba(175, 24, 29, 0.92);
+  color: rgba(218, 18, 28, 0.92);
   opacity: 0.9;
   animation: red-regulation-flash 520ms steps(2) both;
 }
@@ -1175,7 +1177,7 @@ body[data-theme="day"] .hero__shade {
   top: 36%;
   width: clamp(3rem, 7vw, 6rem);
   aspect-ratio: 1;
-  border-color: rgba(143, 23, 27, 0.66);
+  border-color: rgba(200, 20, 28, 0.66);
   animation: regulation-red-orbit 4.4s steps(4) infinite;
 }
 
@@ -1934,7 +1936,7 @@ body[data-theme="day"] .hero__shade {
   padding: clamp(1rem, 2.6vw, 2rem);
   border: 1px solid var(--line);
   background:
-    linear-gradient(135deg, rgba(143, 23, 27, 0.055), transparent 38%),
+    linear-gradient(135deg, rgba(200, 20, 28, 0.055), transparent 38%),
     rgba(244, 244, 242, 0.018);
 }
 
@@ -2024,7 +2026,7 @@ body[data-theme="day"] .hero__shade {
 .message-form input:focus,
 .message-form textarea:focus {
   border-color: var(--signal-red);
-  box-shadow: 0 0 0 1px rgba(143, 23, 27, 0.26);
+  box-shadow: 0 0 0 1px rgba(200, 20, 28, 0.26);
 }
 
 .message-form__status {
@@ -2060,7 +2062,7 @@ body[data-theme="day"] .hero__shade {
   padding: clamp(1.2rem, 4vw, 2rem);
   border: 1px solid var(--line-strong);
   background:
-    linear-gradient(135deg, rgba(143, 23, 27, 0.07), transparent 30%),
+    linear-gradient(135deg, rgba(200, 20, 28, 0.07), transparent 30%),
     #050505;
   box-shadow: 0 1.2rem 3rem rgba(0, 0, 0, 0.42);
 }
@@ -2247,7 +2249,7 @@ body[data-theme="day"] .hero__shade {
   }
 
   .hero__logo-wrap {
-    width: 88vw;
+    width: 96vw;
     max-width: none;
   }
 
