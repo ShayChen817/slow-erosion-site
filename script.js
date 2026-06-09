@@ -602,6 +602,7 @@ function setupPhotoCarousel() {
 
 function setupContactConsole() {
   const wechatWindow = document.querySelector("#wechatWindow");
+  const storeWindow = document.querySelector("#storeWindow");
   const messageForm = document.querySelector("#messageForm");
   const messageStatus = document.querySelector("#messageStatus");
 
@@ -618,6 +619,19 @@ function setupContactConsole() {
     wechatWindow.setAttribute("aria-hidden", "true");
   };
 
+  const openStore = () => {
+    if (!storeWindow) return;
+    storeWindow.classList.add("is-open");
+    storeWindow.setAttribute("aria-hidden", "false");
+    storeWindow.querySelector("[data-close-store]")?.focus();
+  };
+
+  const closeStore = () => {
+    if (!storeWindow) return;
+    storeWindow.classList.remove("is-open");
+    storeWindow.setAttribute("aria-hidden", "true");
+  };
+
   document.addEventListener("click", (event) => {
     const wechatTrigger = event.target.closest("[data-open-wechat], .social-link[data-platform='wechat']");
     if (wechatTrigger) {
@@ -626,13 +640,27 @@ function setupContactConsole() {
       return;
     }
 
+    const storeTrigger = event.target.closest("[data-nav='store']");
+    if (storeTrigger) {
+      event.preventDefault();
+      openStore();
+      return;
+    }
+
     if (event.target.closest("[data-close-wechat]") || event.target === wechatWindow) {
       closeWechat();
+    }
+
+    if (event.target.closest("[data-close-store]") || event.target === storeWindow) {
+      closeStore();
     }
   });
 
   window.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") closeWechat();
+    if (event.key === "Escape") {
+      closeWechat();
+      closeStore();
+    }
   });
 
   messageForm?.addEventListener("submit", async (event) => {

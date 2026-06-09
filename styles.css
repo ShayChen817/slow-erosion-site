@@ -2213,6 +2213,27 @@ body[data-theme="day"] .hero__shade {
   fill: none;
 }
 
+body[data-theme="day"] .social-link {
+  background: rgba(8, 8, 8, 0.016);
+  color: rgba(8, 8, 8, 0.86);
+}
+
+body[data-theme="day"] .social-link::before {
+  color: rgba(8, 8, 8, 0.12);
+}
+
+body[data-theme="day"] .social-link:hover {
+  background: rgba(8, 8, 8, 0.04);
+}
+
+body[data-theme="day"] .social-link:hover .social-link__icon {
+  background: rgba(8, 8, 8, 0.06);
+}
+
+body[data-theme="day"] .social-link:hover .social-link__label span {
+  color: rgba(8, 8, 8, 0.7);
+}
+
 .social-link__label {
   position: relative;
   z-index: 2;
@@ -2712,6 +2733,70 @@ body[data-theme="day"] .hero__shade {
 
 .wechat-window__panel p:not(.eyebrow) {
   color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.6;
+}
+
+.store-window {
+  position: fixed;
+  inset: 0;
+  z-index: 9500;
+  display: grid;
+  place-items: center;
+  visibility: hidden;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.66);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms ease, visibility 220ms;
+}
+
+.store-window.is-open {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.store-window__panel {
+  position: relative;
+  width: min(28rem, 100%);
+  padding: clamp(1.4rem, 4vw, 2.2rem);
+  border: 1px solid var(--line-strong);
+  background:
+    linear-gradient(135deg, rgba(200, 20, 28, 0.07), transparent 30%),
+    #050505;
+  box-shadow: 0 1.2rem 3rem rgba(0, 0, 0, 0.42);
+}
+
+.store-window__close {
+  position: absolute;
+  top: 0.8rem;
+  right: 0.8rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  border: 1px solid var(--line);
+  color: var(--fg);
+  font-size: 1.2rem;
+}
+
+.store-window__panel h2 {
+  margin: 0.6rem 0 1rem;
+  font-family: var(--display);
+  font-size: clamp(3.4rem, 14vw, 6.5rem);
+  line-height: 0.78;
+  letter-spacing: -0.06em;
+  color: #f4f4f2;
+}
+
+.store-window__lead {
+  margin: 0 0 0.6rem !important;
+  color: rgba(244, 244, 242, 0.92) !important;
+  font-size: 0.82rem !important;
+  letter-spacing: 0.08em;
+}
+
+.store-window__panel p:not(.eyebrow) {
+  color: rgba(244, 244, 242, 0.6);
   font-size: 0.72rem;
   line-height: 1.6;
 }
