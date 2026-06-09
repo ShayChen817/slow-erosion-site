@@ -31,6 +31,7 @@ const SOCIAL_LINKS = [
   { platform: "bilibili", label: "Bilibili", meta: "CN VIDEO", href: "https://space.bilibili.com/3493089568098826?spm_id_from=333.1007.0.0" },
   { platform: "instagram", label: "Instagram", meta: "IMAGE FEED", href: "https://www.instagram.com/slowerosionofficial/" },
   { platform: "tiktok", label: "TikTok", meta: "SHORT SIGNAL", href: "https://www.tiktok.com/@slowerosion1" },
+  { platform: "x", label: "X", meta: "TWITTER", href: "https://x.com/Onyxirius325" },
   { platform: "douyin", label: "Douyin", meta: "抖音", href: "https://www.douyin.com/user/MS4wLjABAAAA67oeAsfaIwGmXSrnkXuysAewPLZM_lIFz_p1G5k06hVfGUxuECSw_bzhdpqfoSoM?from_tab_name=main" },
   { platform: "wechat", label: "WeChat", meta: "DIRECT WINDOW", href: "#wechat" },
   { platform: "email", label: "Email", meta: "MAILTO", href: "mailto:SlowErosion@outlook.com" },
@@ -47,6 +48,7 @@ const SOCIAL_ICONS = {
   douyin: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.4 4h2.5c.4 2.1 1.7 3.6 3.9 3.9v2.5c-1.4-.1-2.7-.5-3.9-1.3v5.6a4.8 4.8 0 1 1-4.8-4.8c.3 0 .5 0 .8.1v2.6a2.3 2.3 0 1 0 1.5 2.1V4Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>`,
   wechat: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.2 5.2c-4.1 0-7.4 2.6-7.4 5.9 0 1.8 1 3.4 2.6 4.5l-.6 2.1 2.5-1.2c.9.3 1.9.5 2.9.5 4.1 0 7.4-2.6 7.4-5.9s-3.3-5.9-7.4-5.9Z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M14.9 10.2c3.5.4 6.2 2.7 6.2 5.6 0 1.5-.8 2.9-2.1 3.9l.5 1.8-2.2-1c-.8.3-1.7.4-2.6.4-2.2 0-4.2-.8-5.4-2.1" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round"/><circle cx="7.7" cy="10.5" r=".7"/><circle cx="12.3" cy="10.5" r=".7"/></svg>`,
   email: `<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="1.4" fill="none" stroke="currentColor" stroke-width="2"/><path d="m4.2 7 7.8 6.2L19.8 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>`,
+  x: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.153h7.594l5.243 6.932 6.49-6.932Zm-1.29 19.494h2.039L6.486 3.24H4.298L17.61 20.647Z" fill="currentColor"/></svg>`,
 };
 
 const randomGlyphs = "01_/-+<>[]{}#%@EROSION";
