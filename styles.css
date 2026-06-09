@@ -229,8 +229,8 @@ body.is-hovering .cursor {
 
 .mode-toggle {
   position: fixed;
-  top: var(--page-pad);
-  right: var(--page-pad);
+  top: 0.6rem;
+  right: 0.6rem;
   z-index: 8200;
   display: inline-flex;
   align-items: center;
