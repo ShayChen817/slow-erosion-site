@@ -2224,10 +2224,6 @@ body[data-theme="day"] .social-link:hover {
   background: rgba(8, 8, 8, 0.04);
 }
 
-body[data-theme="day"] .social-link:hover .social-link__icon {
-  background: rgba(8, 8, 8, 0.06);
-}
-
 body[data-theme="day"] .social-link:hover .social-link__label span {
   color: rgba(8, 8, 8, 0.7);
 }
@@ -2265,10 +2261,17 @@ body[data-theme="day"] .social-link:hover .social-link__label span {
   transform: translateY(0);
 }
 
+/* Dual-tone gradient icon tile + neon glow on hover (all platforms) */
 .social-link:hover .social-link__icon {
-  color: var(--brand, var(--fg));
-  border-color: color-mix(in srgb, var(--brand, var(--fg)) 70%, transparent);
-  background: rgba(0, 0, 0, 0.38);
+  color: #fff;
+  border-color: color-mix(in srgb, var(--brand-2, var(--brand, var(--fg))) 70%, transparent);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--brand, var(--fg)) 55%, transparent),
+    color-mix(in srgb, var(--brand-2, var(--brand, var(--fg))) 55%, transparent));
+  box-shadow:
+    0 0 0.85rem color-mix(in srgb, var(--brand, var(--fg)) 50%, transparent),
+    0 0 1.7rem color-mix(in srgb, var(--brand-2, var(--brand, var(--fg))) 35%, transparent);
   transform: scale(1.08);
 }
 
@@ -2276,43 +2279,27 @@ body[data-theme="day"] .social-link:hover .social-link__label span {
   color: rgba(244, 244, 242, 0.7);
 }
 
-.social-link[data-platform="spotify"] { --brand: #1db954; }
-.social-link[data-platform="youtube"] { --brand: #ff0033; }
-.social-link[data-platform="netease"] { --brand: #d43c33; }
-.social-link[data-platform="xiaohongshu"] { --brand: #ff2442; }
-.social-link[data-platform="bilibili"] { --brand: #00aeec; }
-.social-link[data-platform="instagram"] { --brand: #e4405f; }
-.social-link[data-platform="wechat"] { --brand: #07c160; }
-.social-link[data-platform="email"] { --brand: var(--accent); }
-
-/* Cyberpunk dual-tone platforms */
-.social-link[data-platform="douyin"] { --brand: #4ad9ff; --brand-2: #b347ff; }
-.social-link[data-platform="tiktok"] { --brand: #25f4ee; --brand-2: #8a2be2; }
-.social-link[data-platform="x"]      { --brand: #6fd3ff; --brand-2: #ffe14d; }
-
-.social-link[data-platform="douyin"]:hover .social-link__icon,
-.social-link[data-platform="tiktok"]:hover .social-link__icon,
-.social-link[data-platform="x"]:hover .social-link__icon {
-  color: #fff;
-  border-color: color-mix(in srgb, var(--brand-2) 70%, transparent);
-  background: linear-gradient(
-    135deg,
-    color-mix(in srgb, var(--brand) 55%, transparent),
-    color-mix(in srgb, var(--brand-2) 55%, transparent));
-  box-shadow:
-    0 0 0.85rem color-mix(in srgb, var(--brand) 55%, transparent),
-    0 0 1.7rem color-mix(in srgb, var(--brand-2) 38%, transparent);
-}
-
-.social-link[data-platform="douyin"]:hover .social-link__label strong,
-.social-link[data-platform="tiktok"]:hover .social-link__label strong,
-.social-link[data-platform="x"]:hover .social-link__label strong {
-  background: linear-gradient(120deg, var(--brand), var(--brand-2));
+/* Gradient-filled title on hover (all platforms) */
+.social-link:hover .social-link__label strong {
+  background: linear-gradient(120deg, var(--brand, var(--fg)), var(--brand-2, var(--brand, var(--fg))));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
 }
+
+/* Per-platform dual-tone brand pairs */
+.social-link[data-platform="spotify"]     { --brand: #1ed760; --brand-2: #14a045; }
+.social-link[data-platform="youtube"]      { --brand: #ff4d4d; --brand-2: #c1000f; }
+.social-link[data-platform="netease"]      { --brand: #ff5a47; --brand-2: #bf2018; }
+.social-link[data-platform="xiaohongshu"]  { --brand: #ff5c78; --brand-2: #ff2442; }
+.social-link[data-platform="bilibili"]     { --brand: #00aeec; --brand-2: #ff6699; }
+.social-link[data-platform="instagram"]    { --brand: #feda75; --brand-2: #d62976; }
+.social-link[data-platform="tiktok"]       { --brand: #25f4ee; --brand-2: #8a2be2; }
+.social-link[data-platform="x"]            { --brand: #6fd3ff; --brand-2: #ffe14d; }
+.social-link[data-platform="douyin"]       { --brand: #4ad9ff; --brand-2: #b347ff; }
+.social-link[data-platform="wechat"]       { --brand: #3ddc84; --brand-2: #07a64f; }
+.social-link[data-platform="email"]        { --brand: var(--accent); --brand-2: #9fe3ff; }
 
 .contact-console {
   display: grid;
@@ -2603,69 +2590,20 @@ body:has(.lightbox.is-open) .photo-carousel__corner {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  border: 1px solid color-mix(in srgb, var(--signal-red) 48%, transparent);
+  border: 1px solid rgba(244, 244, 242, 0.08);
+  /* Layered drop shadow so the photo reads as floating above the backdrop */
   box-shadow:
-    0 2rem 6rem rgba(0, 0, 0, 0.72),
-    0 0 0 1px rgba(244, 244, 242, 0.06),
-    0 0 1.4rem color-mix(in srgb, var(--signal-red) 26%, transparent);
+    0 0.6rem 1.4rem rgba(0, 0, 0, 0.5),
+    0 1.8rem 3.6rem rgba(0, 0, 0, 0.55),
+    0 3.6rem 7rem rgba(0, 0, 0, 0.62);
   opacity: 0;
-  transform: scale(0.96);
-  transition: opacity 320ms var(--ease-out), transform 320ms var(--ease-out);
+  transform: scale(0.96) translateY(0.6rem);
+  transition: opacity 320ms var(--ease-out), transform 360ms var(--ease-out);
 }
 
 .lightbox.is-open .lightbox__img {
   opacity: 1;
-  transform: scale(1);
-  animation: lightboxEdgePulse 3.4s ease-in-out infinite;
-}
-
-@keyframes lightboxEdgePulse {
-  0%, 100% {
-    border-color: color-mix(in srgb, var(--signal-red) 40%, transparent);
-    box-shadow:
-      0 2rem 6rem rgba(0, 0, 0, 0.72),
-      0 0 0 1px rgba(244, 244, 242, 0.05),
-      0 0 1.1rem color-mix(in srgb, var(--signal-red) 20%, transparent);
-  }
-  50% {
-    border-color: color-mix(in srgb, var(--signal-red) 72%, transparent);
-    box-shadow:
-      0 2rem 6rem rgba(0, 0, 0, 0.72),
-      0 0 0 1px rgba(244, 244, 242, 0.1),
-      0 0 2.6rem color-mix(in srgb, var(--signal-red) 44%, transparent);
-  }
-}
-
-/* HUD corner brackets framing the enlarged photo */
-.lightbox__stage::before,
-.lightbox__stage::after {
-  position: absolute;
-  z-index: 3;
-  width: 2.4rem;
-  height: 2.4rem;
-  content: "";
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 320ms var(--ease-out) 120ms;
-}
-
-.lightbox__stage::before {
-  top: 0;
-  left: 0;
-  border-top: 1px solid var(--signal-red);
-  border-left: 1px solid var(--signal-red);
-}
-
-.lightbox__stage::after {
-  right: 0;
-  bottom: 0;
-  border-right: 1px solid var(--signal-red);
-  border-bottom: 1px solid var(--signal-red);
-}
-
-.lightbox.is-open .lightbox__stage::before,
-.lightbox.is-open .lightbox__stage::after {
-  opacity: 0.7;
+  transform: scale(1) translateY(-0.4rem);
 }
 
 .lightbox__img.is-loading {
@@ -3089,6 +3027,12 @@ body:has(.lightbox.is-open) .photo-carousel__corner {
 
   .mobile-header {
     display: flex;
+  }
+
+  /* Tuck the mode toggle left of the hamburger so it stops covering the menu */
+  .mode-toggle {
+    top: 1.15rem;
+    right: 4.6rem;
   }
 
   .sidebar {
