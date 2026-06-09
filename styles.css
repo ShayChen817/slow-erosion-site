@@ -1298,12 +1298,6 @@ body[data-theme="day"] .hero__shade {
   color: var(--accent);
 }
 
-/* The closing line is one muted italic sentence — don't accent-colour its
-   leading "当"; let it match the rest of the line. */
-.about__bio .bio-erode--closing::first-letter {
-  color: inherit;
-}
-
 .about__bio-cn p,
 .about__bio-en p {
   position: relative;
@@ -1328,14 +1322,6 @@ body[data-theme="day"] .hero__shade {
     -0.022em 0.012em rgba(120, 180, 200, 0.16);
 }
 
-.bio-erode--closing {
-  color: var(--muted) !important;
-}
-
-.bio-erode--closing:hover {
-  color: rgba(138, 138, 136, 0.45) !important;
-  border-left-color: rgba(200, 20, 28, 0.24) !important;
-}
 
 /* Idle "slow erosion": the panel border slowly corrodes toward red, and the
    thematic paragraphs breathe with a faint chromatic shadow — desynced so the
@@ -1470,6 +1456,30 @@ body[data-theme="day"] .hero__shade {
 
 .bio-lang-btn[data-lang="en"] .bio-lang-btn__current { content: "EN"; }
 .bio-lang-btn[data-lang="en"] .bio-lang-btn__other { content: "ZH"; }
+
+/* Title row: THE BAND + compact ZH / EN toggle, toggle sitting at the
+   baseline of the big title so it's reachable the moment you scroll in. */
+.about__title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: clamp(0.9rem, 3vw, 2.2rem);
+}
+
+.bio-lang-btn--short {
+  gap: 0.4rem;
+  padding: 0.3rem 0.62rem;
+  margin-bottom: clamp(0.35rem, 1.2vw, 1rem);
+}
+
+.bio-lang-btn__opt {
+  color: var(--muted);
+  transition: color 180ms ease;
+}
+
+.bio-lang-btn__opt.is-active {
+  color: var(--fg);
+}
 
 .about__side {
   display: flex;

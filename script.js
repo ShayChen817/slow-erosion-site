@@ -727,24 +727,34 @@ function setupThemeMode() {
 }
 
 function setupBioLangToggle() {
-  const btn = document.getElementById("bioLangToggle");
+  const buttons = [...document.querySelectorAll(".bio-lang-btn")];
   const cn = document.querySelector(".about__bio-cn");
   const en = document.querySelector(".about__bio-en");
-  if (!btn || !cn || !en) return;
+  if (!buttons.length || !cn || !en) return;
 
   let lang = "zh";
   let busy = false;
 
-  btn.addEventListener("click", () => {
+  const syncLabels = () => {
+    buttons.forEach((btn) => {
+      const cur = btn.querySelector(".bio-lang-btn__current");
+      const oth = btn.querySelector(".bio-lang-btn__other");
+      if (cur) cur.textContent = lang === "zh" ? "中文" : "ENG";
+      if (oth) oth.textContent = lang === "zh" ? "ENG" : "中文";
+      // compact "ZH / EN" variant: highlight the active language
+      btn.querySelectorAll(".bio-lang-btn__opt").forEach((opt) => {
+        opt.classList.toggle("is-active", opt.dataset.lang === lang);
+      });
+    });
+  };
+
+  const toggle = () => {
     if (busy) return;
     busy = true;
 
     const current = lang === "zh" ? cn : en;
     const next = lang === "zh" ? en : cn;
     lang = lang === "zh" ? "en" : "zh";
-
-    const labelCurrent = btn.querySelector(".bio-lang-btn__current");
-    const labelOther = btn.querySelector(".bio-lang-btn__other");
 
     current.classList.add("is-leaving");
 
@@ -767,17 +777,13 @@ function setupBioLangToggle() {
           }, 320);
         });
       });
-
-      labelCurrent.textContent = lang === "zh" ? "中文" : "ENG";
-      labelOther.textContent = lang === "zh" ? "ENG" : "中文";
     }, 280);
 
-    labelCurrent.textContent = lang === "zh" ? "中文" : "ENG";
-    labelOther.textContent = lang === "zh" ? "ENG" : "中文";
-  });
+    syncLabels();
+  };
 
-  btn.querySelector(".bio-lang-btn__current").textContent = "中文";
-  btn.querySelector(".bio-lang-btn__other").textContent = "ENG";
+  buttons.forEach((btn) => btn.addEventListener("click", toggle));
+  syncLabels();
 }
 
 function setupLightbox() {
