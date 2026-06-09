@@ -11,8 +11,9 @@
   --panel: rgba(6, 6, 6, 0.72);
   --sidebar: clamp(8.5rem, 15vw, 18rem);
   --page-pad: clamp(1rem, 3vw, 3rem);
-  --ui: "Cascadia Mono", "JetBrains Mono", "Space Mono", "Lucida Console", monospace;
-  --display: "Bahnschrift Condensed", "Impact", "Franklin Gothic Heavy", sans-serif;
+  --cjk: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong", "SimSun";
+  --ui: "Cascadia Mono", "JetBrains Mono", "Space Mono", "Lucida Console", var(--cjk), monospace;
+  --display: "Bahnschrift Condensed", "Impact", "Franklin Gothic Heavy", var(--cjk), sans-serif;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-hard: cubic-bezier(0.86, 0, 0.07, 1);
   --corrode: 0;
@@ -1328,7 +1329,6 @@ body[data-theme="day"] .hero__shade {
 }
 
 .bio-erode--closing {
-  font-style: italic;
   color: var(--muted) !important;
 }
 
