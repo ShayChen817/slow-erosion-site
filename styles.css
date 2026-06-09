@@ -291,7 +291,7 @@ body[data-theme="day"] .mode-toggle {
   inset: 0;
   opacity: 0.42;
   background:
-    linear-gradient(90deg, transparent 0 49.7%, rgba(200, 20, 28, 0.16) 49.8% 50%, transparent 50.2%),
+    linear-gradient(90deg, transparent 0 49.7%, rgba(200, 20, 28, 0.38) 49.8% 50%, transparent 50.2%),
     linear-gradient(rgba(244, 244, 242, 0.08) 1px, transparent 1px),
     linear-gradient(90deg, rgba(244, 244, 242, 0.08) 1px, transparent 1px);
   background-size: 100% 100%, 100% 5rem, 8.333vw 100%;
@@ -1081,9 +1081,9 @@ body[data-theme="day"] .hero__shade {
   font-family: "Arial Black", "Impact", "Bahnschrift Condensed", var(--display);
   font-weight: 900;
   line-height: 0.72;
-  letter-spacing: -0.075em;
+  letter-spacing: -0.04em;
   text-transform: uppercase;
-  transform: scaleX(0.84) skewX(-3deg);
+  transform: scaleX(1) skewX(0deg);
   transform-origin: left center;
 }
 
@@ -1121,16 +1121,16 @@ body[data-theme="day"] .hero__shade {
 }
 
 .corrosion__word::after {
-  color: rgba(200, 20, 28, 0.2);
+  color: rgba(200, 20, 28, 0.55);
   clip-path: inset(54% 0 24% 0);
   transform: translateX(-0.04em);
-  opacity: 0.18;
+  opacity: 0.42;
   animation: red-regulation-idle 3.2s steps(3) infinite;
 }
 
 .corrosion__word.is-glitching::after {
-  color: rgba(218, 18, 28, 0.92);
-  opacity: 0.9;
+  color: rgba(218, 18, 28, 1);
+  opacity: 1;
   animation: red-regulation-flash 520ms steps(2) both;
 }
 
@@ -1177,7 +1177,7 @@ body[data-theme="day"] .hero__shade {
   top: 36%;
   width: clamp(3rem, 7vw, 6rem);
   aspect-ratio: 1;
-  border-color: rgba(200, 20, 28, 0.66);
+  border-color: rgba(200, 20, 28, 0.92);
   animation: regulation-red-orbit 4.4s steps(4) infinite;
 }
 
@@ -1533,7 +1533,7 @@ body[data-theme="day"] .hero__shade {
   visibility: hidden;
   opacity: 0;
   transform: scale(1.06);
-  transition: opacity 900ms var(--ease-out), transform 1400ms var(--ease-out), visibility 900ms;
+  transition: opacity 1400ms var(--ease-out), transform 2000ms var(--ease-out), visibility 1400ms;
 }
 
 .photo-slide.is-active {
@@ -2198,16 +2198,16 @@ body[data-theme="day"] .hero__shade {
 }
 
 @keyframes red-regulation-idle {
-  0%, 60%, 100% { opacity: 0.08; clip-path: inset(54% 0 24% 0); transform: translateX(-0.02em); }
-  64% { opacity: 0.38; clip-path: inset(20% 0 64% 0); transform: translateX(0.035em); }
-  70% { opacity: 0.24; clip-path: inset(72% 0 8% 0); transform: translateX(-0.045em); }
-  76% { opacity: 0.34; clip-path: inset(42% 0 39% 0); transform: translateX(0.02em); }
+  0%, 60%, 100% { opacity: 0.22; clip-path: inset(54% 0 24% 0); transform: translateX(-0.02em); }
+  64% { opacity: 0.72; clip-path: inset(20% 0 64% 0); transform: translateX(0.035em); }
+  70% { opacity: 0.48; clip-path: inset(72% 0 8% 0); transform: translateX(-0.045em); }
+  76% { opacity: 0.62; clip-path: inset(42% 0 39% 0); transform: translateX(0.02em); }
 }
 
 @keyframes regulation-red-orbit {
-  0%, 46%, 100% { opacity: 0.28; transform: translate3d(0, 0, 0) scale(1); }
-  50% { opacity: 0.74; transform: translate3d(-0.18rem, 0.08rem, 0) scale(1.08); }
-  58% { opacity: 0.42; transform: translate3d(0.14rem, -0.06rem, 0) scale(0.95); }
+  0%, 46%, 100% { opacity: 0.55; transform: translate3d(0, 0, 0) scale(1); }
+  50% { opacity: 0.92; transform: translate3d(-0.18rem, 0.08rem, 0) scale(1.08); }
+  58% { opacity: 0.68; transform: translate3d(0.14rem, -0.06rem, 0) scale(0.95); }
 }
 
 @keyframes menu-damage {

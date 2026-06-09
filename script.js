@@ -533,7 +533,7 @@ function setupPhotoCarousel() {
 
   let active = 0;
   let timer = null;
-  const interval = 4200;
+  const interval = 7000;
 
   if (totalLabel) totalLabel.textContent = String(slides.length).padStart(2, "0");
 
