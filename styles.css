@@ -1271,8 +1271,8 @@ body[data-theme="day"] .hero__shade {
   margin: 0;
   color: var(--fg);
   font-family: "Georgia", "Times New Roman", serif;
-  font-size: clamp(1.28rem, 2.75vw, 3.25rem);
-  line-height: 1.08;
+  font-size: clamp(0.88rem, 1.5vw, 1.55rem);
+  line-height: 1.65;
   letter-spacing: -0.035em;
   text-transform: none;
 }
@@ -2542,7 +2542,8 @@ body[data-theme="day"] .hero__shade {
   }
 
   .about__bio p {
-    font-size: clamp(1.15rem, 8vw, 2.15rem);
+    font-size: clamp(0.82rem, 3.5vw, 1.05rem);
+    line-height: 1.7;
   }
 
   .keyword-strip li {
