@@ -465,12 +465,29 @@ function setupVideoFallback() {
   if (!video) return;
 
   const mq = window.matchMedia("(max-width: 900px)");
+  const hero = document.querySelector(".hero");
+
+  primeInlineVideo(video);
+
+  const tryPlay = () => {
+    if (document.hidden) return;
+    primeInlineVideo(video);
+    const playAttempt = video.play?.();
+    if (playAttempt?.catch) {
+      playAttempt.catch(() => {
+        hero?.classList.add("hero--poster-waiting");
+      });
+    }
+  };
 
   const applySource = (isMobile) => {
     const src = isMobile ? ASSETS.heroVideo.mobile : ASSETS.heroVideo.mp4;
     const source = video.querySelector("source");
     if (source) {
-      if (source.src.endsWith(src)) return;
+      if (source.getAttribute("src") === src) {
+        tryPlay();
+        return;
+      }
       source.src = src;
     } else {
       const s = document.createElement("source");
@@ -479,16 +496,38 @@ function setupVideoFallback() {
       video.append(s);
     }
     video.load();
-    video.play().catch(() => {});
+    tryPlay();
   };
 
   applySource(mq.matches);
   mq.addEventListener("change", (e) => applySource(e.matches));
 
-  video.addEventListener("error", () => {
-    video.style.display = "none";
-    document.querySelector(".hero")?.classList.add("hero--poster-only");
+  ["loadedmetadata", "canplay", "playing"].forEach((eventName) => {
+    video.addEventListener(eventName, () => {
+      hero?.classList.remove("hero--poster-waiting");
+      tryPlay();
+    });
   });
+
+  ["pointerdown", "touchstart", "click"].forEach((eventName) => {
+    window.addEventListener(eventName, tryPlay, { once: true, passive: true });
+  });
+
+  window.addEventListener("pageshow", tryPlay);
+  document.addEventListener("visibilitychange", tryPlay);
+
+  video.addEventListener("error", () => {
+    hero?.classList.add("hero--poster-only");
+  });
+}
+
+function primeInlineVideo(video) {
+  video.muted = true;
+  video.defaultMuted = true;
+  video.playsInline = true;
+  video.setAttribute("muted", "");
+  video.setAttribute("playsinline", "");
+  video.setAttribute("webkit-playsinline", "");
 }
 
 function setupMobileFooterVideo() {
@@ -496,6 +535,14 @@ function setupMobileFooterVideo() {
   if (!video || reduceMotion) return;
 
   const query = window.matchMedia("(max-width: 900px)");
+
+  primeInlineVideo(video);
+
+  const tryPlay = () => {
+    if (!query.matches || document.hidden) return;
+    primeInlineVideo(video);
+    video.play?.().catch(() => undefined);
+  };
 
   const loadSource = () => {
     if (video.dataset.loaded) return;
@@ -511,7 +558,7 @@ function setupMobileFooterVideo() {
   const syncVideo = () => {
     if (query.matches) {
       loadSource();
-      video.play?.().catch(() => undefined);
+      tryPlay();
       return;
     }
 
@@ -519,6 +566,17 @@ function setupMobileFooterVideo() {
   };
 
   syncVideo();
+
+  ["loadedmetadata", "canplay", "playing"].forEach((eventName) => {
+    video.addEventListener(eventName, tryPlay);
+  });
+
+  ["pointerdown", "touchstart", "click"].forEach((eventName) => {
+    window.addEventListener(eventName, tryPlay, { once: true, passive: true });
+  });
+
+  window.addEventListener("pageshow", tryPlay);
+  document.addEventListener("visibilitychange", tryPlay);
 
   if (query.addEventListener) {
     query.addEventListener("change", syncVideo);
