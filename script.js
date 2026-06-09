@@ -72,6 +72,7 @@ setupPhotoCarousel();
 setupContactConsole();
 setupThemeMode();
 setupBioLangToggle();
+setupLightbox();
 
 function renderNavigation() {
   const desktopNav = document.querySelector("#desktopNav");
@@ -746,4 +747,93 @@ function setupBioLangToggle() {
 
   btn.querySelector(".bio-lang-btn__current").textContent = "中文";
   btn.querySelector(".bio-lang-btn__other").textContent = "ENG";
+}
+
+function setupLightbox() {
+  const lb = document.getElementById("lightbox");
+  const lbImg = document.getElementById("lightboxImg");
+  const lbClose = document.getElementById("lightboxClose");
+  const lbPrev = document.getElementById("lightboxPrev");
+  const lbNext = document.getElementById("lightboxNext");
+  const lbIndex = document.getElementById("lightboxIndex");
+  const lbCaption = document.getElementById("lightboxCaption");
+  if (!lb) return;
+
+  let images = [];
+  let current = 0;
+
+  function buildImageList() {
+    images = [];
+    document.querySelectorAll(".photo-card img, .photo-slide img").forEach(img => {
+      const src = img.src;
+      const webpSource = img.closest("picture")?.querySelector("source[type='image/webp']")?.srcset;
+      const alt = img.alt || "";
+      const caption = img.closest("figcaption")
+        ? Array.from(img.closest("figure")?.querySelectorAll("figcaption span") || []).map(s => s.textContent).join(" — ")
+        : alt;
+      if (src && !images.some(i => i.src === src)) {
+        images.push({ src: webpSource || src, alt, caption });
+      }
+    });
+  }
+
+  function open(index) {
+    buildImageList();
+    current = ((index % images.length) + images.length) % images.length;
+    show(current);
+    lb.classList.add("is-open");
+    lb.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    lbClose.focus();
+  }
+
+  function close() {
+    lb.classList.remove("is-open");
+    lb.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
+
+  function show(index) {
+    const item = images[index];
+    if (!item) return;
+    lbImg.classList.add("is-loading");
+    lbImg.onload = () => lbImg.classList.remove("is-loading");
+    lbImg.src = item.src;
+    lbImg.alt = item.alt;
+    lbIndex.textContent = `${String(index + 1).padStart(2, "0")} / ${String(images.length).padStart(2, "0")}`;
+    lbCaption.textContent = item.caption;
+    lbPrev.style.display = images.length < 2 ? "none" : "";
+    lbNext.style.display = images.length < 2 ? "none" : "";
+  }
+
+  document.addEventListener("click", e => {
+    const card = e.target.closest(".photo-card, .photo-slide");
+    if (!card) return;
+    buildImageList();
+    const img = card.querySelector("img");
+    const idx = images.findIndex(i => i.alt === img?.alt || i.src.includes(img?.src?.split("/").pop()?.split("?")[0]));
+    open(idx >= 0 ? idx : 0);
+  });
+
+  lbClose.addEventListener("click", close);
+  lb.addEventListener("click", e => { if (e.target === lb) close(); });
+  lbPrev.addEventListener("click", () => { current = (current - 1 + images.length) % images.length; show(current); });
+  lbNext.addEventListener("click", () => { current = (current + 1) % images.length; show(current); });
+
+  document.addEventListener("keydown", e => {
+    if (!lb.classList.contains("is-open")) return;
+    if (e.key === "Escape") close();
+    if (e.key === "ArrowLeft") { current = (current - 1 + images.length) % images.length; show(current); }
+    if (e.key === "ArrowRight") { current = (current + 1) % images.length; show(current); }
+  });
+
+  let touchStartX = 0;
+  lb.addEventListener("touchstart", e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener("touchend", e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 48) {
+      current = dx < 0 ? (current + 1) % images.length : (current - 1 + images.length) % images.length;
+      show(current);
+    }
+  });
 }
