@@ -15,12 +15,13 @@ const ASSETS = {
 
 const NAV_ITEMS = [
   { index: "Indx.01", label: "HOME", text: "Home", href: "#home", nav: "home" },
-  { index: "Indx.02", label: "PH0T0", text: "Photo", href: "#photo", nav: "photo" },
-  { index: "Indx.03", label: "UPDAT3", text: "Updates", href: "#updates", nav: "updates" },
-  { index: "Indx.04", label: "MU5IC", text: "Music", href: "#music", nav: "music" },
-  { index: "Indx.05", label: "C0NTACT", text: "Contact", href: "#contact", nav: "contact" },
-  { index: "Indx.06", label: "VIDEO5", text: "Videos", href: "https://space.bilibili.com/3493089568098826?spm_id_from=333.1007.0.0", nav: "videos" },
-  { index: "Indx.07", label: "ST0RE", text: "Store", href: "#", nav: "store" },
+  { index: "Indx.02", label: "4B0UT", text: "About", href: "#about", nav: "about" },
+  { index: "Indx.03", label: "PH0T0", text: "Photo", href: "#photo", nav: "photo" },
+  { index: "Indx.04", label: "UPDAT3", text: "Updates", href: "#updates", nav: "updates" },
+  { index: "Indx.05", label: "MU5IC", text: "Music", href: "#music", nav: "music" },
+  { index: "Indx.06", label: "C0NTACT", text: "Contact", href: "#contact", nav: "contact" },
+  { index: "Indx.07", label: "VIDEO5", text: "Videos", href: "https://space.bilibili.com/3493089568098826?spm_id_from=333.1007.0.0", nav: "videos" },
+  { index: "Indx.08", label: "ST0RE", text: "Store", href: "#", nav: "store" },
 ];
 
 const SOCIAL_LINKS = [
