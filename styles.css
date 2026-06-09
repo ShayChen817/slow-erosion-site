@@ -1519,24 +1519,61 @@ body[data-theme="day"] .hero__shade {
   text-transform: uppercase;
 }
 
+/* Member name with the same slow red "signal" sheen as the footer credit,
+   staggered per row so the lineup shimmers in sequence rather than in unison.
+   Base is near-white, so the names stay fully legible. */
 .roster-member__name {
-  color: var(--fg);
   font-size: 0.82rem;
   letter-spacing: 0.04em;
   text-decoration: none;
-  transition: color 180ms ease;
+  background: linear-gradient(
+    100deg,
+    rgba(244, 244, 242, 0.95) 0%,
+    rgba(244, 244, 242, 0.95) 42%,
+    var(--signal-red) 50%,
+    rgba(244, 244, 242, 0.95) 58%,
+    rgba(244, 244, 242, 0.95) 100%);
+  background-size: 240% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: credit-sheen 6.5s linear infinite;
 }
 
+.roster-member:nth-child(2) .roster-member__name { animation-delay: -1.6s; }
+.roster-member:nth-child(3) .roster-member__name { animation-delay: -3.2s; }
+.roster-member:nth-child(4) .roster-member__name { animation-delay: -4.8s; }
+
 .roster-member__name:hover {
+  animation: none;
+  -webkit-text-fill-color: var(--signal-red);
   color: var(--signal-red);
 }
 
 .roster-member__name em {
   font-style: normal;
   color: var(--muted);
+  -webkit-text-fill-color: var(--muted);
   font-size: 0.78em;
   margin-left: 0.5em;
   letter-spacing: 0.08em;
+}
+
+/* Platform logo suffix (RED for most, Bilibili for the drummer) */
+.roster-member__logo {
+  width: 0.92rem;
+  height: 0.92rem;
+  margin-left: 0.55em;
+  vertical-align: -0.16em;
+  transition: transform 180ms var(--ease-out);
+}
+
+.roster-member__logo--xhs { color: #ff2442; }
+.roster-member__logo--bili { color: #00aeec; }
+
+.roster-member__name:hover .roster-member__logo {
+  transform: translateY(-0.12rem) scale(1.08);
 }
 
 .keyword-strip {
