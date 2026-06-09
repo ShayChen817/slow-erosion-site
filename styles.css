@@ -1374,6 +1374,39 @@ body[data-theme="day"] .hero__shade {
   animation-play-state: paused;
 }
 
+/* Henrik Udd (Swedish producer) — link to his studio; the name occasionally
+   flashes gold then blue, a nod to the Swedish flag. Idle most of the cycle
+   so the bio text stays calm and readable. */
+.bio-henrik {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(63, 154, 224, 0.45);
+  animation: henrik-sweden 6s ease-in-out infinite;
+  transition: color 200ms ease, border-color 200ms ease;
+}
+
+@keyframes henrik-sweden {
+  0%, 70%, 100% {
+    color: inherit;
+    text-shadow: none;
+  }
+  78% {
+    color: #f4c842;
+    text-shadow: 0 0 0.5em rgba(244, 200, 66, 0.55);
+  }
+  88% {
+    color: #3f9ae0;
+    text-shadow: 0 0 0.5em rgba(63, 154, 224, 0.5);
+  }
+}
+
+.bio-henrik:hover {
+  animation: none;
+  color: #f4c842;
+  border-bottom-color: #f4c842;
+  text-shadow: 0 0 0.5em rgba(244, 200, 66, 0.45);
+}
+
 .about__bio-cn,
 .about__bio-en {
   transition: opacity 300ms ease, transform 300ms ease;
