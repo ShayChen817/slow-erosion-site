@@ -1708,6 +1708,24 @@ body[data-theme="day"] .hero__shade {
   transform: translateY(-0.24rem);
 }
 
+.release__netease-player {
+  margin-top: clamp(1rem, 2vw, 1.5rem);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.38);
+  opacity: 0.82;
+  transition: opacity 220ms ease;
+}
+
+.release__netease-player:hover {
+  opacity: 1;
+}
+
+.release__netease-player iframe {
+  display: block;
+  filter: invert(0.88) hue-rotate(170deg) brightness(0.78);
+}
+
 .release__cover {
   position: relative;
   margin: 0;
@@ -1715,6 +1733,10 @@ body[data-theme="day"] .hero__shade {
   border: 1px solid var(--line-strong);
   background: var(--black);
   box-shadow: 0 1.2rem 3.8rem rgba(0, 0, 0, 0.28);
+}
+
+.release__cover-link {
+  display: block;
 }
 
 .release__cover::before,
