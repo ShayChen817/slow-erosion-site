@@ -846,7 +846,13 @@ function setupLightbox() {
   });
 
   lbClose.addEventListener("click", close);
-  lb.addEventListener("click", e => { if (e.target === lb) close(); });
+  // Close on any tap outside the photo itself (backdrop, stage padding, meta).
+  // The stage fills the screen on mobile, so checking `e.target === lb` alone
+  // never fired there — close unless the tap landed on the image or a button.
+  lb.addEventListener("click", e => {
+    if (e.target === lbImg || e.target.closest("button")) return;
+    close();
+  });
   lbPrev.addEventListener("click", () => { current = (current - 1 + images.length) % images.length; show(current); });
   lbNext.addEventListener("click", () => { current = (current + 1) % images.length; show(current); });
 
