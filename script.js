@@ -701,13 +701,49 @@ function setupBioLangToggle() {
   if (!btn || !cn || !en) return;
 
   let lang = "zh";
+  let busy = false;
 
   btn.addEventListener("click", () => {
+    if (busy) return;
+    busy = true;
+
+    const current = lang === "zh" ? cn : en;
+    const next = lang === "zh" ? en : cn;
     lang = lang === "zh" ? "en" : "zh";
-    const isCn = lang === "zh";
-    cn.classList.toggle("is-hidden", !isCn);
-    en.classList.toggle("is-hidden", isCn);
-    btn.querySelector(".bio-lang-btn__current").textContent = isCn ? "ZH" : "EN";
-    btn.querySelector(".bio-lang-btn__other").textContent = isCn ? "EN" : "ZH";
+
+    const labelCurrent = btn.querySelector(".bio-lang-btn__current");
+    const labelOther = btn.querySelector(".bio-lang-btn__other");
+
+    current.classList.add("is-leaving");
+
+    setTimeout(() => {
+      current.classList.add("is-hidden");
+      current.classList.remove("is-leaving");
+
+      next.style.opacity = "0";
+      next.style.transform = "translateY(0.6rem)";
+      next.classList.remove("is-hidden");
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          next.style.transition = "opacity 320ms ease, transform 320ms ease";
+          next.style.opacity = "";
+          next.style.transform = "";
+          setTimeout(() => {
+            next.style.transition = "";
+            busy = false;
+          }, 320);
+        });
+      });
+
+      labelCurrent.textContent = lang === "zh" ? "中文" : "ENG";
+      labelOther.textContent = lang === "zh" ? "ENG" : "中文";
+    }, 280);
+
+    labelCurrent.textContent = lang === "zh" ? "中文" : "ENG";
+    labelOther.textContent = lang === "zh" ? "ENG" : "中文";
   });
+
+  btn.querySelector(".bio-lang-btn__current").textContent = "中文";
+  btn.querySelector(".bio-lang-btn__other").textContent = "ENG";
 }
