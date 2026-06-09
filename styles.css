@@ -2282,9 +2282,37 @@ body[data-theme="day"] .social-link:hover .social-link__label span {
 .social-link[data-platform="xiaohongshu"] { --brand: #ff2442; }
 .social-link[data-platform="bilibili"] { --brand: #00aeec; }
 .social-link[data-platform="instagram"] { --brand: #e4405f; }
-.social-link[data-platform="tiktok"] { --brand: #fe2c55; }
 .social-link[data-platform="wechat"] { --brand: #07c160; }
 .social-link[data-platform="email"] { --brand: var(--accent); }
+
+/* Cyberpunk dual-tone platforms */
+.social-link[data-platform="douyin"] { --brand: #4ad9ff; --brand-2: #b347ff; }
+.social-link[data-platform="tiktok"] { --brand: #25f4ee; --brand-2: #8a2be2; }
+.social-link[data-platform="x"]      { --brand: #6fd3ff; --brand-2: #ffe14d; }
+
+.social-link[data-platform="douyin"]:hover .social-link__icon,
+.social-link[data-platform="tiktok"]:hover .social-link__icon,
+.social-link[data-platform="x"]:hover .social-link__icon {
+  color: #fff;
+  border-color: color-mix(in srgb, var(--brand-2) 70%, transparent);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--brand) 55%, transparent),
+    color-mix(in srgb, var(--brand-2) 55%, transparent));
+  box-shadow:
+    0 0 0.85rem color-mix(in srgb, var(--brand) 55%, transparent),
+    0 0 1.7rem color-mix(in srgb, var(--brand-2) 38%, transparent);
+}
+
+.social-link[data-platform="douyin"]:hover .social-link__label strong,
+.social-link[data-platform="tiktok"]:hover .social-link__label strong,
+.social-link[data-platform="x"]:hover .social-link__label strong {
+  background: linear-gradient(120deg, var(--brand), var(--brand-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
 
 .contact-console {
   display: grid;
@@ -2552,6 +2580,14 @@ body[data-theme="day"] .social-link:hover .social-link__label span {
   pointer-events: auto;
 }
 
+/* Hide the carousel's own nav/chrome so it doesn't bleed a second set
+   of arrows through the lightbox backdrop while a photo is enlarged. */
+body:has(.lightbox.is-open) .photo-carousel__btn,
+body:has(.lightbox.is-open) .photo-carousel__corner {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .lightbox__stage {
   position: relative;
   display: flex;
@@ -2567,8 +2603,11 @@ body[data-theme="day"] .social-link:hover .social-link__label span {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  border: 1px solid rgba(244, 244, 242, 0.14);
-  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.72);
+  border: 1px solid color-mix(in srgb, var(--signal-red) 48%, transparent);
+  box-shadow:
+    0 2rem 6rem rgba(0, 0, 0, 0.72),
+    0 0 0 1px rgba(244, 244, 242, 0.06),
+    0 0 1.4rem color-mix(in srgb, var(--signal-red) 26%, transparent);
   opacity: 0;
   transform: scale(0.96);
   transition: opacity 320ms var(--ease-out), transform 320ms var(--ease-out);
@@ -2577,6 +2616,56 @@ body[data-theme="day"] .social-link:hover .social-link__label span {
 .lightbox.is-open .lightbox__img {
   opacity: 1;
   transform: scale(1);
+  animation: lightboxEdgePulse 3.4s ease-in-out infinite;
+}
+
+@keyframes lightboxEdgePulse {
+  0%, 100% {
+    border-color: color-mix(in srgb, var(--signal-red) 40%, transparent);
+    box-shadow:
+      0 2rem 6rem rgba(0, 0, 0, 0.72),
+      0 0 0 1px rgba(244, 244, 242, 0.05),
+      0 0 1.1rem color-mix(in srgb, var(--signal-red) 20%, transparent);
+  }
+  50% {
+    border-color: color-mix(in srgb, var(--signal-red) 72%, transparent);
+    box-shadow:
+      0 2rem 6rem rgba(0, 0, 0, 0.72),
+      0 0 0 1px rgba(244, 244, 242, 0.1),
+      0 0 2.6rem color-mix(in srgb, var(--signal-red) 44%, transparent);
+  }
+}
+
+/* HUD corner brackets framing the enlarged photo */
+.lightbox__stage::before,
+.lightbox__stage::after {
+  position: absolute;
+  z-index: 3;
+  width: 2.4rem;
+  height: 2.4rem;
+  content: "";
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 320ms var(--ease-out) 120ms;
+}
+
+.lightbox__stage::before {
+  top: 0;
+  left: 0;
+  border-top: 1px solid var(--signal-red);
+  border-left: 1px solid var(--signal-red);
+}
+
+.lightbox__stage::after {
+  right: 0;
+  bottom: 0;
+  border-right: 1px solid var(--signal-red);
+  border-bottom: 1px solid var(--signal-red);
+}
+
+.lightbox.is-open .lightbox__stage::before,
+.lightbox.is-open .lightbox__stage::after {
+  opacity: 0.7;
 }
 
 .lightbox__img.is-loading {
@@ -2586,9 +2675,9 @@ body[data-theme="day"] .social-link:hover .social-link__label span {
 
 .lightbox__close {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  z-index: 2;
+  top: max(1.6rem, env(safe-area-inset-top, 0px) + 1rem);
+  right: max(1.6rem, env(safe-area-inset-right, 0px) + 1rem);
+  z-index: 4;
   width: 2.6rem;
   height: 2.6rem;
   border: 1px solid rgba(244, 244, 242, 0.3);
