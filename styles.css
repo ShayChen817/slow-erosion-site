@@ -1078,19 +1078,19 @@ body[data-theme="day"] .hero__shade {
 .corrosion__word {
   position: relative;
   width: fit-content;
-  font-family: "Arial Black", "Impact", "Bahnschrift Condensed", var(--display);
-  font-weight: 900;
+  font-family: "Chakra Petch", "Arial Black", "Impact", var(--display);
+  font-weight: 700;
   line-height: 0.72;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
-  transform: scaleX(1) skewX(0deg);
+  transform: scaleX(0.64) scaleY(1.44) skewX(-4deg);
   transform-origin: left center;
 }
 
 .corrosion__word--slow {
   z-index: 3;
   color: rgba(244, 244, 242, 0.88);
-  font-size: clamp(5.2rem, 16vw, 16rem);
+  font-size: clamp(3.8rem, 11vw, 11rem);
   text-shadow: 0.05em 0.035em 0 rgba(0, 0, 0, 0.42);
 }
 
@@ -1098,7 +1098,7 @@ body[data-theme="day"] .hero__shade {
   justify-self: end;
   margin-top: clamp(-2.6rem, -4vw, -1rem);
   color: rgba(244, 244, 242, 0.08);
-  font-size: clamp(5rem, 14vw, 14.5rem);
+  font-size: clamp(3.6rem, 10vw, 10rem);
   -webkit-text-stroke: 1.8px rgba(244, 244, 242, 0.72);
   text-shadow:
     0 0 1.2rem rgba(244, 244, 242, 0.1),
