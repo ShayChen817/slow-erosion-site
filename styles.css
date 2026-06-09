@@ -3031,9 +3031,20 @@ body:has(.lightbox.is-open) .photo-carousel__corner {
 .footer__credit-li {
   display: flex;
   align-items: center;
-  color: rgba(138, 138, 136, 0.45);
+  color: rgba(138, 138, 136, 0.55);
   text-decoration: none;
-  transition: color 180ms ease;
+  transition: color 180ms ease, transform 180ms var(--ease-out);
+}
+
+.footer__credit-gh svg,
+.footer__credit-li svg {
+  width: clamp(1.1rem, 2.4vw, 1.35rem);
+  height: clamp(1.1rem, 2.4vw, 1.35rem);
+}
+
+.footer__credit-gh:hover,
+.footer__credit-li:hover {
+  transform: translateY(-0.1rem);
 }
 
 .footer__credit-gh:hover {
