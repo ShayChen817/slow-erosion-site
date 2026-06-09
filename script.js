@@ -792,6 +792,30 @@ function setupLightbox() {
 
   let images = [];
   let current = 0;
+  let autoTimer = null;
+  const AUTO_MS = 4500;
+
+  function stopAuto() {
+    window.clearInterval(autoTimer);
+    autoTimer = null;
+  }
+
+  function startAuto() {
+    stopAuto();
+    if (reduceMotion || images.length < 2) return;
+    autoTimer = window.setInterval(() => {
+      current = (current + 1) % images.length;
+      show(current);
+    }, AUTO_MS);
+  }
+
+  // Manual navigation: move and restart the auto-advance countdown so it
+  // doesn't immediately flip right after the user clicks/swipes.
+  function go(delta) {
+    current = (current + delta + images.length) % images.length;
+    show(current);
+    startAuto();
+  }
 
   function buildImageList() {
     images = [];
@@ -816,9 +840,11 @@ function setupLightbox() {
     lb.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
     lbClose.focus();
+    startAuto();
   }
 
   function close() {
+    stopAuto();
     lb.classList.remove("is-open");
     lb.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
@@ -854,23 +880,27 @@ function setupLightbox() {
     if (e.target === lbImg || e.target.closest("button")) return;
     close();
   });
-  lbPrev.addEventListener("click", () => { current = (current - 1 + images.length) % images.length; show(current); });
-  lbNext.addEventListener("click", () => { current = (current + 1) % images.length; show(current); });
+  lbPrev.addEventListener("click", () => go(-1));
+  lbNext.addEventListener("click", () => go(1));
 
   document.addEventListener("keydown", e => {
     if (!lb.classList.contains("is-open")) return;
     if (e.key === "Escape") close();
-    if (e.key === "ArrowLeft") { current = (current - 1 + images.length) % images.length; show(current); }
-    if (e.key === "ArrowRight") { current = (current + 1) % images.length; show(current); }
+    if (e.key === "ArrowLeft") go(-1);
+    if (e.key === "ArrowRight") go(1);
+  });
+
+  // Pause the slideshow while the tab is hidden, resume when it returns.
+  document.addEventListener("visibilitychange", () => {
+    if (!lb.classList.contains("is-open")) return;
+    if (document.hidden) stopAuto();
+    else startAuto();
   });
 
   let touchStartX = 0;
   lb.addEventListener("touchstart", e => { touchStartX = e.touches[0].clientX; }, { passive: true });
   lb.addEventListener("touchend", e => {
     const dx = e.changedTouches[0].clientX - touchStartX;
-    if (Math.abs(dx) > 48) {
-      current = dx < 0 ? (current + 1) % images.length : (current - 1 + images.length) % images.length;
-      show(current);
-    }
+    if (Math.abs(dx) > 48) go(dx < 0 ? 1 : -1);
   });
 }
