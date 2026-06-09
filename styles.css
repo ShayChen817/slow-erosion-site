@@ -1286,13 +1286,21 @@ body[data-theme="day"] .hero__shade {
 .about__bio p:last-child { margin-bottom: 0; }
 
 .about__bio-cn p {
-  font-family: "PingFang SC", "Noto Serif SC", "Source Han Serif SC", "STSong", "SimSun", "Georgia", serif;
-  letter-spacing: 0.06em;
-  line-height: 1.95;
+  font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong", "SimSun", "Georgia", serif;
+  letter-spacing: 0.04em;
+  line-height: 2;
+  font-feature-settings: "palt" 1;
+  text-rendering: optimizeLegibility;
 }
 
 .about__bio p::first-letter {
   color: var(--accent);
+}
+
+/* The closing line is one muted italic sentence — don't accent-colour its
+   leading "当"; let it match the rest of the line. */
+.about__bio .bio-erode--closing::first-letter {
+  color: inherit;
 }
 
 .about__bio-cn p,
