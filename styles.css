@@ -2416,7 +2416,8 @@ body[data-theme="day"] .hero__shade {
   align-items: center;
   gap: 0.6rem;
   margin-top: 0.7rem;
-  padding-top: 0.7rem;
+  padding-top: 0.9rem;
+  padding-bottom: 0.9rem;
   border-top: 1px solid var(--line);
   color: rgba(138, 138, 136, 0.5);
   font-size: 0.72rem;
@@ -2436,6 +2437,21 @@ body[data-theme="day"] .hero__shade {
 }
 
 .footer__credit-name:hover {
+  color: var(--fg);
+}
+
+.footer__credit-sep--thin {
+  opacity: 0.3;
+}
+
+.footer__credit-contact {
+  color: rgba(244, 244, 242, 0.35);
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  transition: color 180ms ease;
+}
+
+.footer__credit-contact:hover {
   color: var(--fg);
 }
 
