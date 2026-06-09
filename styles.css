@@ -1281,11 +1281,19 @@ body[data-theme="day"] .hero__shade {
   color: var(--accent);
 }
 
+.about__side {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
 .about__image-panel {
   position: relative;
-  min-height: 34rem;
+  flex: 1;
+  min-height: 22rem;
   overflow: hidden;
   border: 1px solid var(--line);
+  border-bottom: none;
   background: #030303;
 }
 
@@ -1303,7 +1311,7 @@ body[data-theme="day"] .hero__shade {
 .about__image-panel img {
   width: 100%;
   height: 100%;
-  min-height: 34rem;
+  min-height: 22rem;
   object-fit: cover;
   filter: grayscale(0.86) contrast(1.12) brightness(0.82) saturate(0.42);
   transform: scale(1.05);
@@ -1320,6 +1328,60 @@ body[data-theme="day"] .hero__shade {
   gap: 1rem;
   color: var(--muted);
   font-size: 0.62rem;
+}
+
+.about__roster {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-top: 1px solid var(--line-strong);
+  background: rgba(6, 6, 6, 0.88);
+}
+
+.roster-member {
+  display: grid;
+  grid-template-columns: 6.5rem 1fr;
+  align-items: center;
+  gap: 0 1.2rem;
+  padding: 0.72rem 1rem;
+  border-bottom: 1px solid var(--line);
+  transition: background 180ms ease;
+}
+
+.roster-member:last-child {
+  border-bottom: none;
+}
+
+.roster-member:hover {
+  background: rgba(244, 244, 242, 0.03);
+}
+
+.roster-member__role {
+  color: var(--muted);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.roster-member__name {
+  color: var(--fg);
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+
+.roster-member__name:hover {
+  color: var(--signal-red);
+}
+
+.roster-member__name em {
+  font-style: normal;
+  color: var(--muted);
+  font-size: 0.78em;
+  margin-left: 0.5em;
+  letter-spacing: 0.08em;
 }
 
 .keyword-strip {
@@ -2493,7 +2555,7 @@ body[data-theme="day"] .hero__shade {
 
   .about__image-panel,
   .about__image-panel img {
-    min-height: 24rem;
+    min-height: 18rem;
   }
 
   .release__meta {
