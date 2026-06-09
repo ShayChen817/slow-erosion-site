@@ -1096,7 +1096,7 @@ body[data-theme="day"] .hero__shade {
 
 .corrosion__word--erosion {
   justify-self: end;
-  margin-top: clamp(-2.6rem, -4vw, -1rem);
+  margin-top: clamp(-5.5rem, -9vw, -3.5rem);
   color: rgba(244, 244, 242, 0.08);
   font-size: clamp(3.6rem, 10vw, 10rem);
   -webkit-text-stroke: 1.8px rgba(244, 244, 242, 0.72);
