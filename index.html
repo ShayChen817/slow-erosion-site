@@ -74,6 +74,10 @@
     <button class="mode-toggle" type="button" id="modeToggle" aria-label="Switch to day mode" data-magnetic>
       <span class="mode-toggle__index">MODE</span>
       <span class="mode-toggle__label">NIGHT</span>
+      <span class="mode-toggle__icon" aria-hidden="true">
+        <svg class="mode-icon mode-icon--moon" viewBox="0 0 24 24" width="13" height="13"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"/></svg>
+        <svg class="mode-icon mode-icon--sun" viewBox="0 0 24 24" width="13" height="13" style="display:none"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+      </span>
     </button>
 
     <aside class="sidebar" aria-label="Primary navigation">
@@ -665,7 +669,6 @@
       <section class="contact-console" aria-label="Contact Slow Erosion">
         <div class="wechat-card">
           <p class="eyebrow">WECHAT / DIRECT SIGNAL</p>
-          <h2>WECHAT WINDOW</h2>
           <p>OPEN A SMALL CONTACT WINDOW FOR WECHAT ID / QR PLACEHOLDER.</p>
           <button class="contact-button" type="button" data-open-wechat data-magnetic>
             OPEN WECHAT WINDOW
@@ -713,7 +716,10 @@
       <div class="footer__credit">
         <span>SITE DESIGN &amp; BUILD</span>
         <span class="footer__credit-sep">//</span>
-        <a href="https://www.linkedin.com/in/shay-chen-a3a1592b4/" target="_blank" rel="noopener noreferrer" class="footer__credit-name">Shay Chen</a>
+        <span class="footer__credit-name">Shay Chen</span>
+        <a href="https://www.linkedin.com/in/shay-chen-a3a1592b4/" target="_blank" rel="noopener noreferrer" class="footer__credit-li" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true" width="13" height="13"><rect x="2" y="2" width="20" height="20" rx="3.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7 10v7M7 7v.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M11 17v-4a2 2 0 0 1 4 0v4M11 10v7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </a>
         <a href="https://github.com/ShayChen817" target="_blank" rel="noopener noreferrer" class="footer__credit-gh" aria-label="GitHub">
           <svg viewBox="0 0 24 24" aria-hidden="true" width="13" height="13"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0 1 12 6.8c.85 0 1.71.11 2.51.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12c0-5.52-4.48-10-10-10Z" fill="currentColor"/></svg>
         </a>

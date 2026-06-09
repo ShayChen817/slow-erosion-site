@@ -265,6 +265,14 @@ body[data-theme="day"] .mode-toggle {
   letter-spacing: 0.16em;
 }
 
+.mode-toggle__icon {
+  display: flex;
+  align-items: center;
+  margin-top: 0.18rem;
+  color: var(--fg);
+  opacity: 0.72;
+}
+
 .preloader {
   position: fixed;
   inset: 0;
@@ -2411,7 +2419,7 @@ body[data-theme="day"] .hero__shade {
   padding-top: 0.7rem;
   border-top: 1px solid var(--line);
   color: rgba(138, 138, 136, 0.5);
-  font-size: 0.6rem;
+  font-size: 0.72rem;
   letter-spacing: 0.14em;
 }
 
@@ -2431,7 +2439,8 @@ body[data-theme="day"] .hero__shade {
   color: var(--fg);
 }
 
-.footer__credit-gh {
+.footer__credit-gh,
+.footer__credit-li {
   display: flex;
   align-items: center;
   color: rgba(138, 138, 136, 0.45);
@@ -2441,6 +2450,10 @@ body[data-theme="day"] .hero__shade {
 
 .footer__credit-gh:hover {
   color: var(--fg);
+}
+
+.footer__credit-li:hover {
+  color: #0a66c2;
 }
 
 .glitch-title {
@@ -2453,6 +2466,12 @@ body[data-theme="day"] .hero__shade {
 .glitch-title:hover::after {
   opacity: 0.82;
   animation: glitch-slice 450ms steps(2) both;
+}
+
+.glitch-title.is-glitching::after,
+.glitch-title:hover::after {
+  color: var(--signal-red);
+  animation: glitch-slice-red 450ms steps(2) both;
 }
 
 [data-reveal] {
@@ -2507,6 +2526,15 @@ body[data-theme="day"] .hero__shade {
   42% { clip-path: inset(66% 0 11% 0); transform: translate(0.07em, -0.012em); }
   66% { clip-path: inset(42% 0 36% 0); transform: translate(-0.04em, 0.018em); }
   100% { clip-path: inset(0); transform: translate(0); }
+}
+
+@keyframes glitch-slice-red {
+  0% { clip-path: inset(0 0 0 0); transform: translate(0); opacity: 0.82; }
+  15% { clip-path: inset(58% 0 18% 0); transform: translate(0.12em, -0.02em); opacity: 1; }
+  35% { clip-path: inset(8% 0 74% 0); transform: translate(-0.1em, 0.025em); opacity: 0.9; }
+  55% { clip-path: inset(34% 0 48% 0); transform: translate(0.08em, 0.01em); opacity: 1; }
+  78% { clip-path: inset(72% 0 6% 0); transform: translate(-0.06em, -0.015em); opacity: 0.85; }
+  100% { clip-path: inset(0); transform: translate(0); opacity: 0; }
 }
 
 @keyframes red-regulation-flash {

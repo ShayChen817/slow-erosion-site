@@ -687,6 +687,10 @@ function setupThemeMode() {
     document.body.dataset.theme = theme;
     if (label) label.textContent = theme === "day" ? "DAY" : "NIGHT";
     toggle?.setAttribute("aria-label", theme === "day" ? "Switch to night mode" : "Switch to day mode");
+    const moon = toggle?.querySelector(".mode-icon--moon");
+    const sun = toggle?.querySelector(".mode-icon--sun");
+    if (moon) moon.style.display = theme === "day" ? "none" : "";
+    if (sun) sun.style.display = theme === "day" ? "" : "none";
   }
 }
 
