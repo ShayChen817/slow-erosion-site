@@ -77,6 +77,7 @@ setupThemeMode();
 setupBioLangToggle();
 setupLightbox();
 setupFullscreenMode();
+setupReleasePlayer();
 
 function renderNavigation() {
   const desktopNav = document.querySelector("#desktopNav");
@@ -992,6 +993,24 @@ function setupLightbox() {
   lb.addEventListener("touchend", e => {
     const dx = e.changedTouches[0].clientX - touchStartX;
     if (Math.abs(dx) > 48) go(dx < 0 ? 1 : -1);
+  });
+}
+
+function setupReleasePlayer() {
+  const iframe = document.getElementById("neteasePlayerFrame");
+  const openSignal = document.getElementById("releaseOpenSignal");
+
+  document.addEventListener("click", (e) => {
+    const trigger = e.target.closest(".release__cover-link[data-song-id]");
+    if (!trigger) return;
+    e.preventDefault();
+
+    const songId = trigger.dataset.songId;
+    if (iframe) iframe.src = `https://music.163.com/outchain/player?type=1&id=${songId}&auto=0&height=66`;
+    if (openSignal) openSignal.href = `https://music.163.com/#/song?id=${songId}`;
+
+    document.querySelectorAll(".release__cover-link[data-song-id]").forEach((el) => el.classList.remove("is-playing"));
+    trigger.classList.add("is-playing");
   });
 }
 
