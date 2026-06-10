@@ -1037,6 +1037,21 @@ function setupFullscreenMode() {
     }
   }
 
+  function exit() {
+    const exitReq = document.exitFullscreen || document.webkitExitFullscreen;
+    if (exitReq) {
+      exitReq.call(document).catch(() => {});
+    } else {
+      document.documentElement.style.zoom = "";
+      audio.pause();
+    }
+  }
+
+  function toggle() {
+    const isFs = !!(document.fullscreenElement || document.webkitFullscreenElement);
+    isFs ? exit() : enter();
+  }
+
   function onFullscreenChange() {
     const isFs = !!(document.fullscreenElement || document.webkitFullscreenElement);
     if (!isFs) {
@@ -1045,7 +1060,7 @@ function setupFullscreenMode() {
     }
   }
 
-  triggerBtns.forEach(btn => btn.addEventListener("click", enter));
+  triggerBtns.forEach(btn => btn.addEventListener("click", toggle));
   document.addEventListener("fullscreenchange", onFullscreenChange);
   document.addEventListener("webkitfullscreenchange", onFullscreenChange);
 }
