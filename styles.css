@@ -2121,59 +2121,6 @@ body[data-theme="day"] .release__note-cn {
   transform: translateY(-0.24rem);
 }
 
-.release__netease-player {
-  margin-top: clamp(1rem, 2vw, 1.5rem);
-  border: 1px solid var(--line);
-  overflow: hidden;
-  background: rgba(0, 0, 0, 0.38);
-  opacity: 0.82;
-  transition: opacity 220ms ease;
-}
-
-.release__netease-player:hover {
-  opacity: 1;
-}
-
-.release__netease-player iframe {
-  display: block;
-  filter: invert(0.88) hue-rotate(170deg) brightness(0.78);
-}
-
-.release__netease-fallback {
-  display: none;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-  height: 66px;
-  padding: 0 1.2rem;
-  color: var(--fg);
-  text-decoration: none;
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.release__netease-fallback span {
-  opacity: 0.56;
-}
-
-.release__netease-fallback strong {
-  font-weight: 600;
-  transition: letter-spacing 200ms ease;
-}
-
-.release__netease-fallback:hover strong {
-  letter-spacing: 0.14em;
-}
-
-.release__netease-player.is-fallback iframe {
-  display: none;
-}
-
-.release__netease-player.is-fallback .release__netease-fallback {
-  display: flex;
-}
 
 .release__cover {
   margin: 0;
