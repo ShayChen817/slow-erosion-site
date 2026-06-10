@@ -2092,16 +2092,26 @@ body[data-theme="day"] .release__note-cn {
   line-height: 1.7;
 }
 
+.release__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: clamp(1.5rem, 3vw, 2.4rem);
+}
+
 .release__button {
   display: inline-grid;
   width: fit-content;
   gap: 0.35rem;
-  margin-top: clamp(1.5rem, 3vw, 2.4rem);
   padding: 0.85rem 1rem;
   border: 1px solid var(--line-strong);
   background: var(--fg);
   color: var(--black);
   transition: transform 220ms var(--ease-out), box-shadow 220ms ease, background 220ms ease;
+}
+
+.release__button--spotify:hover {
+  background: #1db954;
 }
 
 .release__button span {
