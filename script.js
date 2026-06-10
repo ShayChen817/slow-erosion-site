@@ -998,7 +998,43 @@ function setupLightbox() {
 
 function setupReleasePlayer() {
   const iframe = document.getElementById("neteasePlayerFrame");
+  const wrap = document.getElementById("neteasePlayerWrap");
+  const fallback = document.getElementById("neteaseFallback");
   const openSignal = document.getElementById("releaseOpenSignal");
+
+  function showFallback(songId) {
+    if (!wrap) return;
+    wrap.classList.add("is-fallback");
+    if (fallback) {
+      fallback.removeAttribute("aria-hidden");
+      fallback.removeAttribute("tabindex");
+      if (songId) fallback.href = `https://music.163.com/#/song?id=${songId}`;
+    }
+  }
+
+  function watchIframe(songId) {
+    if (!iframe) return;
+
+    const timeout = window.setTimeout(() => showFallback(songId), 5000);
+
+    const onLoad = () => {
+      try {
+        const doc = iframe.contentDocument;
+        if (!doc || doc.URL === "about:blank" || doc.URL === "") {
+          showFallback(songId);
+        } else {
+          window.clearTimeout(timeout);
+        }
+      } catch {
+        // SecurityError — cross-origin content loaded normally
+        window.clearTimeout(timeout);
+      }
+    };
+
+    iframe.addEventListener("load", onLoad, { once: true });
+  }
+
+  watchIframe("3389789528");
 
   document.addEventListener("click", (e) => {
     const trigger = e.target.closest(".release__cover-link[data-song-id]");
@@ -1006,11 +1042,17 @@ function setupReleasePlayer() {
     e.preventDefault();
 
     const songId = trigger.dataset.songId;
+
+    if (wrap) wrap.classList.remove("is-fallback");
+    if (fallback) { fallback.setAttribute("aria-hidden", "true"); fallback.setAttribute("tabindex", "-1"); }
+
     if (iframe) iframe.src = `https://music.163.com/outchain/player?type=1&id=${songId}&auto=0&height=66`;
     if (openSignal) openSignal.href = `https://music.163.com/#/song?id=${songId}`;
 
     document.querySelectorAll(".release__cover-link[data-song-id]").forEach((el) => el.classList.remove("is-playing"));
     trigger.classList.add("is-playing");
+
+    watchIframe(songId);
   });
 }
 
