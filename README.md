@@ -1,5 +1,5 @@
 # Slow Erosion Official Website
-
+https://slow-erosion.asia/
 Single-page official homepage for Slow Erosion, built with plain HTML/CSS/JS for static deployment.
 
 ## Run Locally
