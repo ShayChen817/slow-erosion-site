@@ -1,48 +1,37 @@
-# Slow Erosion Official Website
-https://slow-erosion.asia/
-Single-page official homepage for Slow Erosion, built with plain HTML/CSS/JS for static deployment.
+<p align="center">
+  <img src="assets/img/logo-red-vivid.png" alt="Slow Erosion" width="760">
+</p>
 
-## Run Locally
+<p align="center">
+  <strong>A digital signal from Wuhan's dark metalcore underground.</strong>
+</p>
 
-```powershell
-node server.mjs
-```
+<p align="center">
+  <a href="https://slow-erosion.asia/"><strong>ENTER THE OFFICIAL WEBSITE →</strong></a>
+</p>
 
-Open `http://localhost:4173`.
+![Slow Erosion band portrait](assets/img/hero-poster.jpg)
 
-You can also serve the folder with any static server. The app has no install step.
+## The Experience
 
-## Asset Map
+The official Slow Erosion website is designed as a corrupted broadcast rather than a conventional band profile. Moving image, signal noise, fractured type, and stark editorial layouts turn the band's world into a continuous audiovisual narrative—cold, oppressive, dreamlike, and alive.
 
-- `assets/video/hero-bg.mp4`: current hero video hard-linked from the original `背景视频.mp4`
-- `assets/video/hero-bg.webm`: expected optimized WebM source, not generated because ffmpeg is not available in this workspace
-- `assets/video/mobile-mv-bg.mp4`: mobile footer background video copied from `手机版MV切片无文字.mp4`
-- `assets/video/logo-intro.webm` and `assets/video/logo-intro.mp4`: expected converted preloader intro sources
-- `assets/video/logo-intro-source.mkv`: hard-linked original MKV source for conversion
-- `assets/img/logo-default.png`: optimized frontend copy of the source logo
-- `assets/img/hero-poster.jpg`: dark poster generated from `band-01.jpg`
-- `assets/img/fever-dream-cover-source.png`: original Fever Dream single cover copy
-- `assets/img/fever-dream-cover.webp`: optimized cover used by the release card
-- `assets/img/logo-window.*` and `favicon-window-*.png`: browser/window logo assets generated from `SLOW EROSION(effects1).jpg`
+The experience moves from cinematic introduction to band story, live archive, performance history, and the debut single **Fever Dream**. Every section behaves like another recovered fragment from the same damaged transmission.
 
-## Contact Messages
+## Design Language
 
-Footer messages are posted to `POST /api/messages` and appended to `data/messages.jsonl`.
-The WeChat window currently uses a QR placeholder; replace that block in `index.html` when the final QR image is ready.
+- **Signal-loss identity** — system readouts, scanlines, grain, glitches, and eroding image treatments translate the band's themes into interface behavior.
+- **Monochrome tension** — deep black, raw white, and a restrained signal red create the visual pressure of modern metal while preserving clarity.
+- **Editorial scale** — oversized condensed typography collides with compact monospace metadata, giving each page the rhythm of a poster and the precision of an archive.
+- **Cinematic motion** — full-screen video, scroll-led transitions, image corrosion, custom cursor feedback, and magnetic controls make browsing feel performative.
+- **Bilingual voice** — Chinese and English storytelling keeps the band's Wuhan identity intact while opening the work to an international audience.
+- **Responsive atmosphere** — desktop and mobile compositions retain the same visual weight, pacing, and sense of controlled instability.
 
-## Video Conversion Commands
+## Inside the Signal
 
-Run these after installing ffmpeg:
+The site brings together the band's origin and philosophy, member profiles, live photography, a 24-show performance log, streaming links for **Fever Dream**, video channels, and direct contact paths in one immersive sequence.
 
-```powershell
-ffmpeg -i "背景视频.mp4" -vf "scale=-2:1080,fps=24" -c:v libx264 -preset slow -crf 28 -an -movflags +faststart "assets/video/hero-bg.mp4"
-ffmpeg -i "背景视频.mp4" -vf "scale=-2:1080,fps=24" -c:v libvpx-vp9 -crf 34 -b:v 0 -an "assets/video/hero-bg.webm"
-ffmpeg -i "logo动画效果黑色背景.mkv" -vf "scale=-2:1080,fps=30" -c:v libvpx-vp9 -crf 32 -b:v 0 -an "assets/video/logo-intro.webm"
-ffmpeg -i "logo动画效果黑色背景.mkv" -vf "scale=-2:1080,fps=30" -c:v libx264 -preset slow -crf 24 -an -movflags +faststart "assets/video/logo-intro.mp4"
-```
-
-Aim for a production hero video under 15MB before deployment.
-
-## Link Configuration
-
-Navigation and social placeholders live at the top of `script.js` in `NAV_ITEMS` and `SOCIAL_LINKS`.
+<p align="center">
+  <a href="https://slow-erosion.asia/"><strong>slow-erosion.asia</strong></a><br>
+  Wuhan, China · Metalcore · Est. 2023
+</p>
