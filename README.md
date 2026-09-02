@@ -28,6 +28,22 @@
 
 ---
 
+## Contents
+
+- [A website imagined as signal failure](#a-website-imagined-as-signal-failure)
+- [Creative thesis](#creative-thesis)
+- [Narrative architecture](#narrative-architecture)
+- [Visual system](#visual-system)
+- [Motion is part of the meaning](#motion-is-part-of-the-meaning)
+- [Interaction language](#interaction-language)
+- [Photography as an archive](#photography-as-an-archive)
+- [Bilingual by design](#bilingual-by-design)
+- [Responsive atmosphere](#responsive-atmosphere)
+- [Design engineering](#design-engineering)
+- [The signal is live](#the-signal-is-live)
+
+---
+
 ## A website imagined as signal failure
 
 Slow Erosion is not presented as a conventional band biography with a hero image, a short introduction, and a list of links. The site is designed as a system that is already failing when the visitor arrives.
